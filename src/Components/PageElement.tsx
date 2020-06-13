@@ -19,45 +19,45 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-enum FieldType {
-    StringField,
-    IntegerField,
-    CurrencyField,
-    BooleanField,
+enum VariableType {
+    StringVariable,
+    IntegerVariable,
+    CurrencyVariable,
+    BooleanVariable,
     // This is pure text
-    TextField,
+    PureText,
 }
-function FieldTypeSelect(props: { onChange: (content: FieldType) => void }) {
+function VariableTypeSelect(props: { onChange: (content: VariableType) => void }) {
     const classes = useStyles();
-    const [fieldType, setFieldType] = React.useState('');
+    const [variableType, setVariableType] = React.useState('');
 
-    const fieldTypes = {
-        'StringField': FieldType.StringField,
-        'IntegerField': FieldType.IntegerField,
-        'CurrencyField': FieldType.CurrencyField,
-        'BooleanField': FieldType.BooleanField,
+    const variableTypes = {
+        'StringVariable': VariableType.StringVariable,
+        'IntegerVariable': VariableType.IntegerVariable,
+        'CurrencyVariable': VariableType.CurrencyVariable,
+        'BooleanVariable': VariableType.BooleanVariable,
         // This is pure text
-        'TextField': FieldType.TextField,
+        'PureText': VariableType.PureText,
     };
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        // Why does the for loop changes the type of fieldType to string?
-        // for(let fieldType in FieldType){
+        // Why does the for loop changes the type of variableType to string?
+        // for(let variableType in VariableType){
 
-        let fieldType: FieldType = fieldTypes[e.target.value as string];
-        props.onChange(fieldType);
-        setFieldType(e.target.value as string);
+        let variableType: VariableType = variableTypes[e.target.value as string];
+        props.onChange(variableType);
+        setVariableType(e.target.value as string);
     };
 
-    const fieldTypeItems = Object.keys(fieldTypes).map((val) => <MenuItem value={val}>{val}</MenuItem>);
+    const variableTypeItems = Object.keys(variableTypes).map((val) => <MenuItem value={val}>{val}</MenuItem>);
     return (
         <div>
             <FormControl className={classes.formControl}>
-                <InputLabel>Field Type</InputLabel>
+                <InputLabel>Variable Type</InputLabel>
                 <Select
-                    value={fieldType}
+                    value={variableType}
                     onChange={handleChange}
                 >
-                    {fieldTypeItems}
+                    {variableTypeItems}
                 </Select>
             </FormControl>
         </div>
@@ -65,7 +65,7 @@ function FieldTypeSelect(props: { onChange: (content: FieldType) => void }) {
 }
 
 function Label() {
-    // sets the label of a field
+    // sets the label of a variable
     const classes = useStyles();
 
     return (
@@ -82,7 +82,7 @@ function Label() {
     );
 }
 function Initial() {
-    // sets the initial value of a field
+    // sets the initial value of a variable
     const classes = useStyles();
 
     return (
@@ -101,7 +101,7 @@ function Initial() {
     );
 }
 function IntMin() {
-    // sets the mininum value of an integer field
+    // sets the mininum value of an integer variable
     const classes = useStyles();
 
     return (
@@ -120,7 +120,7 @@ function IntMin() {
     );
 }
 function IntMax() {
-    // sets the mininum value of an integer field
+    // sets the mininum value of an integer variable
     const classes = useStyles();
 
     return (
@@ -138,7 +138,7 @@ function IntMax() {
         </span>
     );
 }
-function IntegerFieldContent() {
+function IntegerVariableContent() {
 
     return (
         <div>
@@ -150,7 +150,7 @@ function IntegerFieldContent() {
     );
 }
 
-function StringFieldContent() {
+function StringVariableContent() {
 
     return (
         <div>
@@ -160,7 +160,7 @@ function StringFieldContent() {
     );
 }
 
-function CurrencyFieldContent() {
+function CurrencyVariableContent() {
 
     return (
         <div>
@@ -172,7 +172,7 @@ function CurrencyFieldContent() {
     );
 };
 
-function BooleanFieldContent() {
+function BooleanVariableContent() {
 
     return (
         <div>
@@ -181,7 +181,7 @@ function BooleanFieldContent() {
         </div>
     );
 };
-function TextFieldContent() {
+function PureTextContent() {
 
     return (
         <div>
@@ -190,23 +190,24 @@ function TextFieldContent() {
         </div>
     );
 };
-const fieldContentMap = {
+
+const variableContentMap = {
     // Use computed property
-    [FieldType.IntegerField]: IntegerFieldContent,
-    [FieldType.StringField]: StringFieldContent,
-    [FieldType.BooleanField]: BooleanFieldContent,
-    [FieldType.CurrencyField]: CurrencyFieldContent,
-    [FieldType.TextField]: TextFieldContent,
+    [VariableType.IntegerVariable]: IntegerVariableContent,
+    [VariableType.StringVariable]: StringVariableContent,
+    [VariableType.BooleanVariable]: BooleanVariableContent,
+    [VariableType.CurrencyVariable]: CurrencyVariableContent,
+    [VariableType.PureText]: PureTextContent,
 }
 
 export default function PageElement() {
-    const [content, setContent] = useState(FieldType.IntegerField);
+    const [content, setContent] = useState(VariableType.IntegerVariable);
 
-    const FieldContentFunc = fieldContentMap[content];
+    const VariableContentFunc = variableContentMap[content];
     return (
         <div>
-            <FieldTypeSelect onChange={setContent} />
-            <FieldContentFunc />
+            <VariableTypeSelect onChange={setContent} />
+            <VariableContentFunc />
         </div>
     );
 }
