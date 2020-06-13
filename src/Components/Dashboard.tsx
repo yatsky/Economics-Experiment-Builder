@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
             zIndex: theme.zIndex.drawer + 1,
             width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
+            marginBottom: 10,
         },
         content: {
             flexGrow: 1,
