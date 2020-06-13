@@ -60,8 +60,8 @@ export default function ButtonAppBar() {
         <div className={classes.root}>
             <AppBar className={classes.appBar} position="static">
                 <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
-                        News
+                    <Typography variant="h3" className={classes.title}>
+                        Experiment builder
                     </Typography>
                 </Toolbar>
             </AppBar>
