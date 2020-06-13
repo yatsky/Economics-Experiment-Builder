@@ -17,10 +17,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-export default function PageBuilder(props: {className: string}) {
+export default function PageBuilder() {
         const classes = useStyles();
         return (
-            <Box border={1} className={props.className}>
+            <Box border={1}>
                 <Grid container>
                     <Grid item xs={12}>
                         <Paper className={classes.paper}>Dummy</Paper>
