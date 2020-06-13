@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
-export default function MyToolbar(props: {className: string}) {
+export default function MyToolbar() {
     const classes = useStyles();
     const buttons = ["Add", "Delete", "Help"].map((val) => {
         const MyIcon = iconMap[val];
@@ -36,6 +36,6 @@ export default function MyToolbar(props: {className: string}) {
         );
     });
     return (
-        <Toolbar className={props.className}>{buttons}</Toolbar>
+        <Toolbar>{buttons}</Toolbar>
     );
 }
