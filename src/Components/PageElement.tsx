@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -27,7 +27,7 @@ enum FieldType {
     // This is pure text
     TextField,
 }
-function FieldTypeSelect(props:{onChange: (content: FieldType) => void}) {
+function FieldTypeSelect(props: { onChange: (content: FieldType) => void }) {
     const classes = useStyles();
     const [fieldType, setFieldType] = React.useState('');
 
@@ -190,21 +190,22 @@ function TextFieldContent() {
         </div>
     );
 };
-const fieldContentMap = new Map();
-fieldContentMap.set(FieldType.IntegerField, IntegerFieldContent);
-fieldContentMap.set(FieldType.StringField, StringFieldContent);
-fieldContentMap.set(FieldType.BooleanField, BooleanFieldContent);
-fieldContentMap.set(FieldType.CurrencyField, CurrencyFieldContent);
-fieldContentMap.set(FieldType.TextField, TextFieldContent);
-
+const fieldContentMap = {
+    // Use computed property
+    [FieldType.IntegerField]: IntegerFieldContent,
+    [FieldType.StringField]: StringFieldContent,
+    [FieldType.BooleanField]: BooleanFieldContent,
+    [FieldType.CurrencyField]: CurrencyFieldContent,
+    [FieldType.TextField]: TextFieldContent,
+}
 
 export default function PageElement() {
     const [content, setContent] = useState(FieldType.IntegerField);
 
-    const FieldContentFunc = fieldContentMap.get(content);
+    const FieldContentFunc = fieldContentMap[content];
     return (
         <div>
-            <FieldTypeSelect onChange={setContent}/>
+            <FieldTypeSelect onChange={setContent} />
             <FieldContentFunc />
         </div>
     );
