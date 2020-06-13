@@ -10,8 +10,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import NoteIcon from '@material-ui/icons/Note';
+import Container from '@material-ui/core/Container';
 import ToolbarButton from './ToolbarButton';
 import MyToolbar from './MyToolbar';
+import PageBuilder from './PageBuilder';
 
 const drawerWidth = 140;
 
@@ -28,6 +30,13 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         appBar: {
             zIndex: theme.zIndex.drawer + 1,
+            width: `calc(100% - ${drawerWidth}px)`,
+            marginLeft: drawerWidth,
+        },
+        content: {
+            flexGrow: 1,
+            height: '100vh',
+            overflow: 'auto',
             width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
         },
@@ -87,6 +96,11 @@ export default function ButtonAppBar() {
                     </List>
                 </div>
             </Drawer>
+            <main className={classes.content}>
+                <Container maxWidth="lg">
+                    <PageBuilder />
+                </Container>
+            </main>
         </div>
     );
 }
