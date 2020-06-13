@@ -64,6 +64,25 @@ function VariableTypeSelect(props: { onChange: (content: VariableType) => void }
     );
 }
 
+function VariableName() {
+
+    // sets the name of a variable
+    const classes = useStyles();
+
+    const handleChange = () => {
+
+    }
+    return (
+        <span>
+            <FormControl className={classes.formControl}>
+                <TextField
+                    label="Variable name"
+                    onChange={handleChange}
+                />
+            </FormControl>
+        </span>
+    );
+}
 function Label() {
     // sets the label of a variable
     const classes = useStyles();
@@ -142,6 +161,7 @@ function IntegerVariableContent() {
 
     return (
         <div>
+            <VariableName />
             <Label />
             <Initial />
             <IntMin />
@@ -154,6 +174,7 @@ function StringVariableContent() {
 
     return (
         <div>
+            <VariableName />
             <Label />
             <Initial />
         </div>
@@ -164,6 +185,7 @@ function CurrencyVariableContent() {
 
     return (
         <div>
+            <VariableName />
             <Label />
             <Initial />
             <IntMin />
@@ -176,6 +198,7 @@ function BooleanVariableContent() {
 
     return (
         <div>
+            <VariableName />
             <Label />
             <Initial />
         </div>
@@ -185,6 +208,7 @@ function PureTextContent() {
 
     return (
         <div>
+            <VariableName />
             <Label />
             <Initial />
         </div>
