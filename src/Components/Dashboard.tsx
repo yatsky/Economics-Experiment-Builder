@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         appBar: {
             zIndex: theme.zIndex.drawer + 1,
-            width: `calc(100% - %{drawerWidth}px)`,
+            width: `calc(100% - ${drawerWidth}px)`,
             marginLeft: drawerWidth,
         },
         drawer: {
@@ -57,7 +57,7 @@ export default function ButtonAppBar() {
                 </Toolbar>
             </AppBar>
             <AppBar className={classes.appBar} position="static">
-                <MyToolbar className={classes.appBar} />
+                <MyToolbar />
             </AppBar>
             <Drawer
                 className={classes.drawer}
