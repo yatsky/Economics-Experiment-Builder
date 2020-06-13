@@ -5,6 +5,8 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { PropTypes } from '@material-ui/core';
 import PageElement from './PageElement';
+import MyToolbar from './MyToolbar';
+import AppBar from '@material-ui/core/AppBar';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -22,6 +24,9 @@ export default function PageBuilder() {
     const classes = useStyles();
     return (
         <Box border={1}>
+            <AppBar position="sticky">
+                <MyToolbar />
+            </AppBar>
             <Grid container>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>

@@ -12,7 +12,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import NoteIcon from '@material-ui/icons/Note';
 import Container from '@material-ui/core/Container';
 import ToolbarButton from './ToolbarButton';
-import MyToolbar from './MyToolbar';
 import PageBuilder from './PageBuilder';
 
 const drawerWidth = 140;
@@ -64,9 +63,6 @@ export default function ButtonAppBar() {
                         News
                     </Typography>
                 </Toolbar>
-            </AppBar>
-            <AppBar className={classes.appBar} position="static">
-                <MyToolbar />
             </AppBar>
             <Drawer
                 className={classes.drawer}
