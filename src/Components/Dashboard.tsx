@@ -13,8 +13,8 @@ import NoteIcon from '@material-ui/icons/Note';
 import Container from '@material-ui/core/Container';
 import ToolbarButton from './ToolbarButton';
 import PageBuilder from './PageBuilder';
+import {drawerWidth} from './Config';
 
-const drawerWidth = 140;
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
