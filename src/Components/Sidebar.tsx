@@ -6,7 +6,10 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
 import NoteIcon from '@material-ui/icons/Note';
+import AddIcon from '@material-ui/icons/Add';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Toolbar from '@material-ui/core/Toolbar';
 
 const drawerWidth = 140;
@@ -46,9 +49,22 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
+
+
+const iconMap = {
+    "Add": AddIcon,
+    "Delete": DeleteIcon,
+}
 export default function Sidebar() {
 
     const classes = useStyles();
+    const buttons = ["Add Page", "Delete Page"].map((val) => {
+        const MyIcon = iconMap[val.split(' ')[0]];
+        return (<Button className={classes.menuButton} startIcon={<MyIcon />}>
+            {val}
+            </Button>
+        );
+    });
     return (
             <Drawer
                 className={classes.drawer}
@@ -60,6 +76,10 @@ export default function Sidebar() {
                 <Toolbar />
                 <div className={classes.drawerContainer}>
                     <List>
+                        {buttons}
+                    </List>
+                    <Divider />
+                    <List>
                         {['Page 1', 'Page 2', 'Page 3', 'Page 4'].map((text, index) => (
                             <ListItem button key={text}>
                                 <ListItemIcon>{index % 2 === 0 ? <NoteIcon /> : <NoteIcon />}</ListItemIcon>
@@ -67,7 +87,6 @@ export default function Sidebar() {
                             </ListItem>
                         ))}
                     </List>
-                    <Divider />
                 </div>
             </Drawer>
     );
