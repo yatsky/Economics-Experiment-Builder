@@ -49,7 +49,7 @@ function VariableTypeSelect(props: { onChange: (content: VariableType) => void }
         setVariableType(e.target.value as string);
     };
 
-    const variableTypeItems = Object.keys(variableTypes).map((val) => <MenuItem value={val}>{val}</MenuItem>);
+    const variableTypeItems = Object.keys(variableTypes).map((val) => <MenuItem value={val} key={val}>{val}</MenuItem>);
     return (
         <div>
             <FormControl className={classes.formControl}>

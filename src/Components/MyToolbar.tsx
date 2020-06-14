@@ -32,6 +32,7 @@ export default function MyToolbar() {
     const buttons = ["Add", "Delete", "Help"].map((val) => {
         const MyIcon = iconMap[val];
         return (<ToolbarButton className={classes.menuButton} icon={<MyIcon />}
+            key={val}
             buttonLabel={val} />
         );
     });

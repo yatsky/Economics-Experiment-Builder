@@ -60,7 +60,7 @@ export default function Sidebar() {
     const classes = useStyles();
     const buttons = ["Add Page", "Delete Page"].map((val) => {
         const MyIcon = iconMap[val.split(' ')[0]];
-        return (<Button className={classes.menuButton} startIcon={<MyIcon />}>
+        return (<Button className={classes.menuButton} startIcon={<MyIcon />} key={val}>
             {val}
         </Button>
         );
