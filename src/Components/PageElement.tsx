@@ -65,6 +65,24 @@ function VariableTypeSelect(props: { onChange: (content: VariableType) => void }
     );
 }
 
+function VariableOwner() {
+    const classes = useStyles();
+    const owners = ["Subsession", "Group", "Player"];
+    const variableOwnerItems = owners.map((val) => <MenuItem value={val} key={val}>{val}</MenuItem>);
+    return (
+        <div className={classes.element}>
+            <FormControl className={classes.formControl}>
+                <InputLabel>Variable Owner</InputLabel>
+                <Select
+                    value="Subsession"
+                >
+                    {variableOwnerItems}
+                </Select>
+            </FormControl>
+        </div>
+    );
+}
+
 function VariableName() {
 
     // sets the name of a variable
