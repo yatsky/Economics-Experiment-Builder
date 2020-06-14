@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -236,6 +237,10 @@ function PureTextContent() {
         <div>
             <VariableName />
             <Label />
+            <TextareaAutosize
+                aria-label="Copy paste in the text like introduction, context, etc."
+                rowsMin={3}
+                placeholder="Copy paste in the text like introduction, context, etc." />
             <Initial />
         </div>
     );
