@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         menuButton: {
             marginRight: theme.spacing(2),
+            marginBottom: theme.spacing(1),
         },
         drawer: {
             width: drawerWidth,
@@ -89,7 +90,7 @@ export default function Sidebar() {
                 <Divider />
                 <List>
                     {pages.map((text, index) => (
-                        <Paper key={text}>
+                        <Paper key={text} className={classes.menuButton}>
                             <ListItem button onClick={handlePageClick}>
                                 <ListItemText primary={text} />
                             </ListItem>
