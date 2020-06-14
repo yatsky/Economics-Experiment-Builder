@@ -105,9 +105,7 @@ export default function Sidebar() {
                 </List>
                 <Divider />
                 <List>
-                    {['Page 1', 'Page 2', 'Page 3', 'Page 4'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <NoteIcon /> : <NoteIcon />}</ListItemIcon>
+                            <ListItem button onClick={handlePageClick}>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
