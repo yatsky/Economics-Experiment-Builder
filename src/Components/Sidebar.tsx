@@ -62,32 +62,32 @@ export default function Sidebar() {
         const MyIcon = iconMap[val.split(' ')[0]];
         return (<Button className={classes.menuButton} startIcon={<MyIcon />}>
             {val}
-            </Button>
+        </Button>
         );
     });
     return (
-            <Drawer
-                className={classes.drawer}
-                variant="permanent"
-                classes={{
-                    paper: classes.drawerPaper,
-                }}
-            >
-                <Toolbar />
-                <div className={classes.drawerContainer}>
-                    <List>
-                        {buttons}
-                    </List>
-                    <Divider />
-                    <List>
-                        {['Page 1', 'Page 2', 'Page 3', 'Page 4'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>{index % 2 === 0 ? <NoteIcon /> : <NoteIcon />}</ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List>
-                </div>
-            </Drawer>
+        <Drawer
+            className={classes.drawer}
+            variant="permanent"
+            classes={{
+                paper: classes.drawerPaper,
+            }}
+        >
+            <Toolbar />
+            <div className={classes.drawerContainer}>
+                <List>
+                    {buttons}
+                </List>
+                <Divider />
+                <List>
+                    {['Page 1', 'Page 2', 'Page 3', 'Page 4'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>{index % 2 === 0 ? <NoteIcon /> : <NoteIcon />}</ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
+            </div>
+        </Drawer>
     );
 }
