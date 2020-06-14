@@ -123,7 +123,8 @@ function Label() {
         </span>
     );
 }
-function Initial() {
+
+function Initial({type="number"}:{type?: string}) {
     // sets the initial value of a variable
     const classes = useStyles();
 
@@ -133,7 +134,7 @@ function Initial() {
                 <TextField
                     id="initial-value"
                     label="Initial value"
-                    type="number"
+                    type={type}
                     InputLabelProps={{
                         shrink: true,
                     }}
