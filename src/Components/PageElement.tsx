@@ -184,6 +184,7 @@ function IntegerVariableContent() {
     return (
         <div>
             <VariableName />
+            <VariableOwner />
             <Label />
             <Initial />
             <IntMin />
@@ -197,6 +198,7 @@ function StringVariableContent() {
     return (
         <div>
             <VariableName />
+            <VariableOwner />
             <Label />
             <Initial />
         </div>
@@ -208,6 +210,7 @@ function CurrencyVariableContent() {
     return (
         <div>
             <VariableName />
+            <VariableOwner />
             <Label />
             <Initial />
             <IntMin />
@@ -221,6 +224,7 @@ function BooleanVariableContent() {
     return (
         <div>
             <VariableName />
+            <VariableOwner />
             <Label />
             <Initial />
         </div>
@@ -254,7 +258,6 @@ export default function PageElement() {
         <div>
             <Paper>
                 <VariableTypeSelect onChange={setContent} />
-                <VariableOwner />
                 <VariableContentFunc />
             </Paper>
         </div>
