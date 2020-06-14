@@ -63,7 +63,8 @@ export default function Sidebar() {
         return (<Button
             className={classes.menuButton}
             startIcon={<MyIcon />}
-            key={val}>
+            key={val}
+            >
             {val}
         </Button>
         );
