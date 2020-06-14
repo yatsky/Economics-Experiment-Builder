@@ -106,6 +106,7 @@ export default function Sidebar() {
                 </List>
                 <Divider />
                 <List>
+                    {pages.map((text, index) => (
                         <Paper key={text}>
                             <ListItem button onClick={handlePageClick}>
                             <ListItemText primary={text} />
