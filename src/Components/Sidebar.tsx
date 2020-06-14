@@ -10,8 +10,8 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Toolbar from '@material-ui/core/Toolbar';
+import { drawerWidth } from './Config';
 
-const drawerWidth = 140;
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
