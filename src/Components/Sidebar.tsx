@@ -58,6 +58,11 @@ const iconMap = {
 export default function Sidebar() {
 
     const classes = useStyles();
+    const handlePageClick = (e: React.MouseEvent) => {
+        let newPages = pages.slice();
+        setPages(newPages.map(pageName => pageName === (e.target as HTMLSpanElement).textContent?"* "+pageName.replace("* ", ""):pageName.replace("* ", "")));
+    }
+
     const buttons = ["Add Page", "Delete Page"].map((val) => {
         const MyIcon = iconMap[val.split(' ')[0]];
         return (<Button
