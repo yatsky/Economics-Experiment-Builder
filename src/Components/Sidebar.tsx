@@ -20,22 +20,6 @@ const useStyles = makeStyles((theme: Theme) =>
         menuButton: {
             marginRight: theme.spacing(2),
         },
-        title: {
-            flexGrow: 1,
-        },
-        appBar: {
-            zIndex: theme.zIndex.drawer + 1,
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-            marginBottom: 10,
-        },
-        content: {
-            flexGrow: 1,
-            height: '100vh',
-            overflow: 'auto',
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-        },
         drawer: {
             width: drawerWidth,
             flexShrink: 0,
