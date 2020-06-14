@@ -202,7 +202,7 @@ function StringVariableContent() {
             <VariableName />
             <VariableOwner />
             <Label />
-            <Initial />
+            <Initial type="string"/>
         </div>
     );
 }
