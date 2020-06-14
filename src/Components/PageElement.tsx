@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme: Theme) =>
         selectEmpty: {
             marginTop: theme.spacing(2),
         },
+        element: {
+            display: "inline",
+        },
     }),
 );
 
@@ -51,7 +54,7 @@ function VariableTypeSelect(props: { onChange: (content: VariableType) => void }
 
     const variableTypeItems = Object.keys(variableTypes).map((val) => <MenuItem value={val} key={val}>{val}</MenuItem>);
     return (
-        <div>
+        <div className={classes.element}>
             <FormControl className={classes.formControl}>
                 <InputLabel>Variable Type</InputLabel>
                 <Select
@@ -251,6 +254,7 @@ export default function PageElement() {
         <div>
             <Paper>
                 <VariableTypeSelect onChange={setContent} />
+                <VariableOwner />
                 <VariableContentFunc />
             </Paper>
         </div>
