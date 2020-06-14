@@ -58,6 +58,8 @@ const iconMap = {
 export default function Sidebar() {
 
     const classes = useStyles();
+
+    const [pages, setPages] = useState<string[]>(["Page 1"]);
     const handlePageClick = (e: React.MouseEvent) => {
         let newPages = pages.slice();
         setPages(newPages.map(pageName => pageName === (e.target as HTMLSpanElement).textContent?"* "+pageName.replace("* ", ""):pageName.replace("* ", "")));
