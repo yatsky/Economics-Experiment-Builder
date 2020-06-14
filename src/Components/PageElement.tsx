@@ -3,6 +3,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -230,8 +231,10 @@ export default function PageElement() {
     const VariableContentFunc = variableContentMap[content];
     return (
         <div>
-            <VariableTypeSelect onChange={setContent} />
-            <VariableContentFunc />
+            <Paper>
+                <VariableTypeSelect onChange={setContent} />
+                <VariableContentFunc />
+            </Paper>
         </div>
     );
 }
