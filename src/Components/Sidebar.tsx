@@ -60,6 +60,18 @@ export default function Sidebar() {
     const classes = useStyles();
 
     const [pages, setPages] = useState<string[]>(["Page 1"]);
+    const handleButtonClick = (e: React.MouseEvent, action: string) => {
+        let newPage = "Page " + (pages.length + 1).toString();
+        let newPages = pages.slice();
+        if(action.includes("Delete")){
+            newPages = newPages.filter(val => !val.includes("* "));
+        }
+        else{
+            newPages.push(newPage);
+        }
+        setPages(newPages);
+    };
+
     const handlePageClick = (e: React.MouseEvent) => {
         let newPages = pages.slice();
         setPages(newPages.map(pageName => pageName === (e.target as HTMLSpanElement).textContent?"* "+pageName.replace("* ", ""):pageName.replace("* ", "")));
@@ -71,6 +83,7 @@ export default function Sidebar() {
             className={classes.menuButton}
             startIcon={<MyIcon />}
             key={val}
+            onClick={(e) => handleButtonClick(e, val)}
             >
             {val}
         </Button>
