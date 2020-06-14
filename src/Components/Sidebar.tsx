@@ -83,6 +83,7 @@ export default function Sidebar() {
             className={classes.menuButton}
             startIcon={<MyIcon />}
             key={val}
+            disabled={val.includes("Delete") && pages.length === 1? true : false}
             onClick={(e) => handleButtonClick(e, val)}
             >
             {val}
