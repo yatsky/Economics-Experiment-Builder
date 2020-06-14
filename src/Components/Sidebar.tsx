@@ -4,11 +4,9 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Paper from '@material-ui/core/Paper';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
-import NoteIcon from '@material-ui/icons/Note';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -64,10 +62,10 @@ export default function Sidebar() {
     const handleButtonClick = (e: React.MouseEvent, action: string) => {
         let newPage = "Page " + (pages.length + 1).toString();
         let newPages = pages.slice();
-        if(action.includes("Delete")){
+        if (action.includes("Delete")) {
             newPages = newPages.filter(val => !val.includes("* "));
         }
-        else{
+        else {
             newPages.push(newPage);
         }
         setPages(newPages);
@@ -75,7 +73,7 @@ export default function Sidebar() {
 
     const handlePageClick = (e: React.MouseEvent) => {
         let newPages = pages.slice();
-        setPages(newPages.map(pageName => pageName === (e.target as HTMLSpanElement).textContent?"* "+pageName.replace("* ", ""):pageName.replace("* ", "")));
+        setPages(newPages.map(pageName => pageName === (e.target as HTMLSpanElement).textContent ? "* " + pageName.replace("* ", "") : pageName.replace("* ", "")));
     }
 
     const buttons = ["Add Page", "Delete Page"].map((val) => {
@@ -84,9 +82,9 @@ export default function Sidebar() {
             className={classes.menuButton}
             startIcon={<MyIcon />}
             key={val}
-            disabled={val.includes("Delete") && pages.length === 1? true : false}
+            disabled={val.includes("Delete") && pages.length === 1 ? true : false}
             onClick={(e) => handleButtonClick(e, val)}
-            >
+        >
             {val}
         </Button>
         );
@@ -109,8 +107,8 @@ export default function Sidebar() {
                     {pages.map((text, index) => (
                         <Paper key={text}>
                             <ListItem button onClick={handlePageClick}>
-                            <ListItemText primary={text} />
-                        </ListItem>
+                                <ListItemText primary={text} />
+                            </ListItem>
                         </Paper>
                     ))}
                 </List>
