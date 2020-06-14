@@ -5,6 +5,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import Paper from '@material-ui/core/Paper';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import NoteIcon from '@material-ui/icons/Note';
@@ -105,9 +106,11 @@ export default function Sidebar() {
                 </List>
                 <Divider />
                 <List>
+                        <Paper key={text}>
                             <ListItem button onClick={handlePageClick}>
                             <ListItemText primary={text} />
                         </ListItem>
+                        </Paper>
                     ))}
                 </List>
             </div>
