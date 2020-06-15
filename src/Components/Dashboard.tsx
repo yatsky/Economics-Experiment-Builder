@@ -59,6 +59,21 @@ type PageElementDataType = {
 export default function Dashboard() {
     const classes = useStyles();
 
+    const [pageBuilders, setPageBuilders] = useState<{name: string,
+    pb: JSX.Element, selected: boolean, data: PageElementDataType}[]>([
+        {
+            name: "Page 1",
+            pb: <PageBuilder handleValChange={handleValChange} />,
+            selected: true,
+            data: {
+                varType: VariableType.IntegerVariable,
+                varName: "",
+                varLabel: "",
+                varInitial: "",
+            },
+        },
+    ]);
+
     return (
         <div className={classes.root}>
             <AppBar className={classes.appBar} position="static">
