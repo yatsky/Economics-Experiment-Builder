@@ -21,9 +21,9 @@ export type PageElementDataType = {
 };
 
 export type PageBuilderType = {
-        name: string,
-        selected: boolean,
-        data: PageElementDataType
+    name: string,
+    selected: boolean,
+    data: PageElementDataType,
 };
 
 export { drawerWidth, VariableType };
