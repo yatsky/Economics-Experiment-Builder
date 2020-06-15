@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
-export default function PageBuilder() {
+export default function PageBuilder(props: {handleValChange: (e: React.ChangeEvent<{value: unknown}>) => void}) {
     const classes = useStyles();
     return (
         <Box border={1}>
@@ -30,7 +30,7 @@ export default function PageBuilder() {
             <Grid container>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                        <PageElement />
+                        <PageElement handleValChange={props.handleValChange} />
                     </Paper>
                 </Grid>
             </Grid>
