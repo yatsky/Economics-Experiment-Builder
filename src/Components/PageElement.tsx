@@ -257,7 +257,8 @@ const variableContentMap = {
     [VariableType.PureText]: PureTextContent,
 }
 
-export default function PageElement() {
+export default function PageElement(props: {pageBuilder: PageBuilderType,
+    handleValChange: (selectedVarType: VariableType) => void}) {
     const [content, setContent] = useState(VariableType.IntegerVariable);
 
     const VariableContentFunc = variableContentMap[content];
