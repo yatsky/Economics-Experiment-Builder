@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
-export default function PageBuilder(props: {handleValChange: (e: React.ChangeEvent<{value: unknown}>) => void}) {
+export default function PageBuilder(props: {pageBuilder: PageBuilderType, handleValChange: (selectedVarType: VariableType) => void}) {
     const classes = useStyles();
     return (
         <Box border={1}>
