@@ -25,15 +25,8 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-enum VariableType {
-    StringVariable,
-    IntegerVariable,
-    CurrencyVariable,
-    BooleanVariable,
-    // This is pure text
-    PureText,
-}
-function VariableTypeSelect(props: { onChange: (content: VariableType) => void }) {
+function VariableTypeSelect(props: {value: string, onChange: (content: VariableType) => void,
+handleValChange: (selectedVarType: VariableType) => void }) {
     const classes = useStyles();
     const [variableType, setVariableType] = React.useState('');
 
