@@ -77,6 +77,27 @@ export default function Dashboard() {
         },
     ]);
 
+    const addPageBuilder = (pageName: string) => {
+        let pbs = pageBuilders.slice();
+        pbs.push(
+            {
+                name: pageName,
+                selected: false,
+                data: {
+                    varType: VariableType.IntegerVariable,
+                    varName: "",
+                    varLabel: "",
+                    varInitial: "",
+                },
+            }
+        );
+        setPageBuilders(pbs);
+    }
+    const removePageBuilder = (pageName: string) => {
+        let pbs = pageBuilders.slice().filter(pb => !pageName.includes(pb.name));
+        pbs[0].selected = true;
+        setPageBuilders(pbs);
+    }
     return (
         <div className={classes.root}>
             <AppBar className={classes.appBar} position="static">
