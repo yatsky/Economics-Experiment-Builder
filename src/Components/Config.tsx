@@ -2,12 +2,12 @@ const drawerWidth = 140;
 
 // VariableType for PageElement
 enum VariableType {
-    StringVariable,
-    IntegerVariable,
-    CurrencyVariable,
-    BooleanVariable,
+    StringVariable = "String Variable",
+    IntegerVariable = "Integer Variable",
+    CurrencyVariable = "Currency Variable",
+    BooleanVariable = "Boolean Variable",
     // This is pure text
-    PureText,
+    PureText = "Text",
 }
 
 export type PageElementDataType = {
