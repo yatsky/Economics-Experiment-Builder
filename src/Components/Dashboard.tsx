@@ -59,6 +59,11 @@ type PageElementDataType = {
 export default function Dashboard() {
     const classes = useStyles();
 
+    // Used by each Field in PageElement.
+    const handleValChange = (e: React.ChangeEvent<{value: unknown}>) => {
+        console.log(e.target.value);
+    };
+
     const [pageBuilders, setPageBuilders] = useState<{name: string,
     pb: JSX.Element, selected: boolean, data: PageElementDataType}[]>([
         {
