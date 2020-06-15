@@ -7,6 +7,7 @@ import { PropTypes } from '@material-ui/core';
 import PageElement from './PageElement';
 import MyToolbar from './MyToolbar';
 import AppBar from '@material-ui/core/AppBar';
+import {PageBuilderType, VariableType} from './Config';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
