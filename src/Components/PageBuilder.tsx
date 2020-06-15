@@ -31,7 +31,7 @@ export default function PageBuilder(props: {pageBuilder: PageBuilderType, handle
             <Grid container>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                        <PageElement handleValChange={props.handleValChange} />
+                        <PageElement pageBuilder={props.pageBuilder} handleValChange={props.handleValChange} />
                     </Paper>
                 </Grid>
             </Grid>
