@@ -39,26 +39,18 @@ const iconMap = {
     "Add": AddIcon,
     "Delete": DeleteIcon,
 }
-export default function Sidebar() {
+export default function Sidebar(props: {pageBuilders: any[], onPageClick: (pageName: string) => void, addPageBuilder: (pageName: string) => void,
+removePageBuilder: () => void}) {
 
     const classes = useStyles();
 
-    const [pages, setPages] = useState<string[]>(["Page 1"]);
     const handleButtonClick = (e: React.MouseEvent, action: string) => {
-        let newPage = "Page " + (pages.length + 1).toString();
-        let newPages = pages.slice();
-        if (action.includes("Delete")) {
-            newPages = newPages.filter(val => !val.includes("* "));
-        }
-        else {
-            newPages.push(newPage);
-        }
-        setPages(newPages);
+        if(action.includes("Add")) props.addPageBuilder("Page " + (props.pageBuilders.length + 1).toString());
+        if(action.includes("Delete")) props.removePageBuilder();
     };
 
     const handlePageClick = (e: React.MouseEvent) => {
-        let newPages = pages.slice();
-        setPages(newPages.map(pageName => pageName === (e.target as HTMLSpanElement).textContent ? "* " + pageName.replace("* ", "") : pageName.replace("* ", "")));
+        props.onPageClick(e.currentTarget.textContent!);
     }
 
     const buttons = ["Add Page", "Delete Page"].map((val) => {
@@ -67,7 +59,7 @@ export default function Sidebar() {
             className={classes.menuButton}
             startIcon={<MyIcon />}
             key={val}
-            disabled={val.includes("Delete") && pages.length === 1 ? true : false}
+            disabled={val.includes("Delete") && props.pageBuilders.length === 1 ? true : false}
             onClick={(e) => handleButtonClick(e, val)}
         >
             {val}
@@ -89,10 +81,10 @@ export default function Sidebar() {
                 </List>
                 <Divider />
                 <List>
-                    {pages.map((text, index) => (
-                        <Paper key={text} className={classes.menuButton}>
+                    {props.pageBuilders.map((pb, index) => (
+                        <Paper key={pb.name} className={classes.menuButton}>
                             <ListItem button onClick={handlePageClick}>
-                                <ListItemText primary={text} />
+                                <ListItemText primary={pb.name} />
                             </ListItem>
                         </Paper>
                     ))}
