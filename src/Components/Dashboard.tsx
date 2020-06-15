@@ -67,7 +67,6 @@ export default function Dashboard() {
     }[]>([
         {
             name: "Page 1",
-            pb: <PageBuilder handleValChange={handleValChange} />,
             selected: true,
             data: {
                 varType: VariableType.IntegerVariable,
