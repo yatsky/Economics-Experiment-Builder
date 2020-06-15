@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
-import { drawerWidth, VariableType } from './Config';
+import { drawerWidth, VariableType, PageBuilderType, PageElementDataType } from './Config';
 
 
 const useStyles = makeStyles((theme: Theme) =>
