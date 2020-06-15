@@ -111,7 +111,10 @@ export default function Dashboard() {
             />
             <main className={classes.content}>
                 <Container maxWidth="lg">
-                    <PageBuilder />
+                    <PageBuilder
+                        pageBuilder={pageBuilders.filter(obj => obj.selected)[0]}
+                        handleValChange={(selectedVarType: VariableType) => handleValChange(selectedVarType, pageBuilders.filter(obj => obj.selected)[0].name)}
+                    />
                 </Container>
             </main>
         </div>
