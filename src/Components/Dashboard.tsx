@@ -93,8 +93,8 @@ export default function Dashboard() {
         );
         setPageBuilders(pbs);
     }
-    const removePageBuilder = (pageName: string) => {
-        let pbs = pageBuilders.slice().filter(pb => !pageName.includes(pb.name));
+    const removePageBuilder = () => {
+        let pbs = pageBuilders.slice().filter(pb => !pb.selected);
         pbs[0].selected = true;
         setPageBuilders(pbs);
     }
