@@ -116,7 +116,7 @@ export default function Dashboard() {
                 </Toolbar>
             </AppBar>
 
-            <Sidebar />
+            <Sidebar onPageClick={handlePageBuilderSelect} addPageBuilder={addPageBuilder} removePageBuilder={removePageBuilder}/>
             <main className={classes.content}>
                 <Container maxWidth="lg">
                     <PageBuilder />
