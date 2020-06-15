@@ -61,7 +61,7 @@ function VariableTypeSelect(props: { onChange: (content: VariableType) => void }
             <FormControl className={classes.formControl}>
                 <InputLabel>Variable Type</InputLabel>
                 <Select
-                    value={variableType}
+                    value={props.value}
                     onChange={handleChange}
                 >
                     {variableTypeItems}
