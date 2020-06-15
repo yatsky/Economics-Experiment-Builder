@@ -46,25 +46,12 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-type PageElementDataType = {
-    varType: VariableType,
-    varName: string,
-    varOwner?: string,
-    varLabel: string,
-    varInitial: string | number,
-    varMin?: number,
-    varMax?: number,
-};
 
 export default function Dashboard() {
     const classes = useStyles();
 
 
-    const [pageBuilders, setPageBuilders] = useState<{
-        name: string,
-        selected: boolean,
-        data: PageElementDataType
-    }[]>([
+    const [pageBuilders, setPageBuilders] = useState<PageBuilderType[]>([
         {
             name: "Page 1",
             selected: true,
