@@ -38,12 +38,12 @@ function VariableTypeSelect(props: { onChange: (content: VariableType) => void }
     const [variableType, setVariableType] = React.useState('');
 
     const variableTypes = {
-        'StringVariable': VariableType.StringVariable,
-        'IntegerVariable': VariableType.IntegerVariable,
-        'CurrencyVariable': VariableType.CurrencyVariable,
-        'BooleanVariable': VariableType.BooleanVariable,
+        'String Variable': VariableType.StringVariable,
+        'Integer Variable': VariableType.IntegerVariable,
+        'Currency Variable': VariableType.CurrencyVariable,
+        'Boolean Variable': VariableType.BooleanVariable,
         // This is pure text
-        'PureText': VariableType.PureText,
+        'Text': VariableType.PureText,
     };
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
         // Why does the for loop changes the type of variableType to string?
