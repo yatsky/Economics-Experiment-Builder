@@ -64,6 +64,21 @@ export default function Dashboard() {
         },
     ]);
 
+    // Used by each Field in PageElement.
+    const handleValChange = (selectedVarType: VariableType, pageName: string) => {
+        console.log(pageBuilders);
+        console.log(pageName);
+        let pbs = pageBuilders.slice().map(pb => {
+            if (pb.name.includes(pageName)) {
+                pb.data.varType = selectedVarType;
+                console.log(pb.data.varType);
+            }
+            return pb;
+        });
+
+        setPageBuilders(pbs);
+    };
+
     const addPageBuilder = (pageName: string) => {
         let pbs = pageBuilders.slice();
         pbs.push(
