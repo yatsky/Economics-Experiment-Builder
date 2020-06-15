@@ -98,6 +98,14 @@ export default function Dashboard() {
         pbs[0].selected = true;
         setPageBuilders(pbs);
     }
+    const handlePageBuilderSelect = (pageName: string) => {
+        let newPBs = pageBuilders.slice().map(obj => {
+            obj.name === pageName ? obj.selected = true : obj.selected = false;
+            return obj;
+        });
+        setPageBuilders(newPBs);
+    };
+
     return (
         <div className={classes.root}>
             <AppBar className={classes.appBar} position="static">
