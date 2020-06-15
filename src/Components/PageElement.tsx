@@ -45,13 +45,14 @@ function VariableTypeSelect(props: { onChange: (content: VariableType) => void }
         // This is pure text
         'Text': VariableType.PureText,
     };
-    const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+    const handleChange = (e: React.ChangeEvent<{value: unknown}>) => {
         // Why does the for loop changes the type of variableType to string?
         // for(let variableType in VariableType){
-
-        let variableType: VariableType = variableTypes[e.target.value as string];
-        props.onChange(variableType);
-        setVariableType(e.target.value as string);
+            if(e.target.value){
+                let v = variableTypes[e.target.value as string];
+                props.handleValChange(v);
+                props.onChange(v);
+            }
     };
 
     const variableTypeItems = Object.keys(variableTypes).map((val) => <MenuItem value={val} key={val}>{val}</MenuItem>);
