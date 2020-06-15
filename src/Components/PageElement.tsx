@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme: Theme) =>
 function VariableTypeSelect(props: {value: string, onChange: (content: VariableType) => void,
 handleValChange: (selectedVarType: VariableType) => void }) {
     const classes = useStyles();
-    const [variableType, setVariableType] = React.useState('');
 
     const variableTypes = {
         'String Variable': VariableType.StringVariable,
