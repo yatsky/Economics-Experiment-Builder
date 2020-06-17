@@ -1,13 +1,12 @@
-import React, { ReactPropTypes } from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { PropTypes } from '@material-ui/core';
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import PageElement from './PageElement';
 import MyToolbar from './MyToolbar';
 import AppBar from '@material-ui/core/AppBar';
-import {HandleValChangePbPeFuncType, PageBuilderType, VariableType} from './Config';
+import {HandleValChangePbPeFuncType, PageBuilderType} from './Config';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -21,17 +20,17 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
-export default function PageBuilder(props: {pageBuilder: PageBuilderType, handleValChange: HandleValChangePbPeFuncType}) {
+export default function PageBuilder(props: { pageBuilder: PageBuilderType, handleValChange: HandleValChangePbPeFuncType }) {
     const classes = useStyles();
     return (
         <Box border={1}>
             <AppBar position="sticky">
-                <MyToolbar />
+                <MyToolbar/>
             </AppBar>
             <Grid container>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                        <PageElement pageBuilder={props.pageBuilder} handleValChange={props.handleValChange} />
+                        <PageElement pageBuilder={props.pageBuilder} handleValChange={props.handleValChange}/>
                     </Paper>
                 </Grid>
             </Grid>

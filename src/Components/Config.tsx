@@ -30,4 +30,4 @@ export type PageBuilderType = {
 export type HandleValChangePbPeFuncType = (val: VariableType | number | string, dataField: string) => void;
 export type HandleValChangeFuncType = (val: VariableType | number | string, dataField: string, pageName: string) => void;
 
-export { drawerWidth, VariableType };
+export {drawerWidth, VariableType};

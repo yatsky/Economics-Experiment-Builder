@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import React, {useState} from 'react';
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
-import { drawerWidth, VariableType, PageBuilderType, PageElementDataType, HandleValChangeFuncType, HandleValChangePbPeFuncType } from './Config';
+import {drawerWidth, HandleValChangeFuncType, PageBuilderType, VariableType} from './Config';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -70,7 +70,7 @@ export default function Dashboard() {
         console.log(pageName);
         let pbs = pageBuilders.slice().map(pb => {
             if (pb.name.includes(pageName)) {
-                pb.data[dataField]=val;
+                pb.data[dataField] = val;
                 console.log(pb.data.varType);
             }
             return pb;
