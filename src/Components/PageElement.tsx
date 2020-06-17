@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import {VariableType, PageBuilderType} from './Config';
+import {VariableType, PageBuilderType, PageElementDataType, HandleValChangePbPeFuncType} from './Config';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function VariableTypeSelect(props: {value: string, onChange: (content: VariableType) => void,
-handleValChange: (selectedVarType: VariableType) => void }) {
+handleValChange: HandleValChangePbPeFuncType }) {
     const classes = useStyles();
 
     const variableTypes = {
@@ -42,7 +42,7 @@ handleValChange: (selectedVarType: VariableType) => void }) {
         // for(let variableType in VariableType){
             if(e.target.value){
                 let v = variableTypes[e.target.value as string];
-                props.handleValChange(v);
+                props.handleValChange(v, "varType");
                 props.onChange(v);
             }
     };
@@ -63,7 +63,7 @@ handleValChange: (selectedVarType: VariableType) => void }) {
     );
 }
 
-function VariableOwner() {
+function VariableOwner(props: {handleValChange: HandleValChangePbPeFuncType}) {
     const classes = useStyles();
     const owners = ["Subsession", "Group", "Player"];
     const variableOwnerItems = owners.map((val) => <MenuItem value={val} key={val}>{val}</MenuItem>);
@@ -81,7 +81,7 @@ function VariableOwner() {
     );
 }
 
-function VariableName() {
+function VariableName(props: {handleValChange: HandleValChangePbPeFuncType}) {
 
     // sets the name of a variable
     const classes = useStyles();
@@ -100,7 +100,7 @@ function VariableName() {
         </span>
     );
 }
-function Label() {
+function Label(props: {handleValChange: HandleValChangePbPeFuncType}) {
     // sets the label of a variable
     const classes = useStyles();
 
@@ -118,7 +118,7 @@ function Label() {
     );
 }
 
-function Initial({type="number"}:{type?: string}) {
+function Initial({type="number", handleValChange, value}:{type?: string, handleValChange:HandleValChangePbPeFuncType, value: string}) {
     // sets the initial value of a variable
     const classes = useStyles();
 
@@ -132,12 +132,14 @@ function Initial({type="number"}:{type?: string}) {
                     InputLabelProps={{
                         shrink: true,
                     }}
+                    onChange={(e: React.ChangeEvent<{value: unknown}>) => handleValChange(e.target.value as string, "varInitial")}
+                    value={value}
                 />
             </FormControl>
         </span>
     );
 }
-function IntMin() {
+function IntMin(props: {handleValChange: HandleValChangePbPeFuncType, value:number}) {
     // sets the mininum value of an integer variable
     const classes = useStyles();
 
@@ -151,12 +153,14 @@ function IntMin() {
                     InputLabelProps={{
                         shrink: true,
                     }}
+                    onChange={(e: React.ChangeEvent<{value: unknown}>) => props.handleValChange(e.target.value as string, "varMin")}
+                    value={props.value}
                 />
             </FormControl>
         </span>
     );
 }
-function IntMax() {
+function IntMax(props: {handleValChange: HandleValChangePbPeFuncType, value:number}) {
     // sets the mininum value of an integer variable
     const classes = useStyles();
 
@@ -170,73 +174,101 @@ function IntMax() {
                     InputLabelProps={{
                         shrink: true,
                     }}
+                    onChange={(e: React.ChangeEvent<{value: unknown}>) => props.handleValChange(e.target.value as string, "varMax")}
+                    value={props.value}
                 />
             </FormControl>
         </span>
     );
 }
-function IntegerVariableContent() {
+function IntegerVariableContent(props:{handleValChange: HandleValChangePbPeFuncType, value: PageElementDataType}) {
 
     return (
         <div>
-            <VariableName />
-            <VariableOwner />
-            <Label />
-            <Initial />
-            <IntMin />
-            <IntMax />
+            <VariableName handleValChange={props.handleValChange} />
+            <VariableOwner handleValChange={props.handleValChange} />
+            <Label handleValChange={props.handleValChange} />
+            <Initial
+            handleValChange={props.handleValChange}
+            value={props.value.varInitial as string}
+            />
+            <IntMin
+            handleValChange={props.handleValChange}
+            value={props.value.varMin!}
+            />
+            <IntMax
+            handleValChange={props.handleValChange}
+            value={props.value.varMax!}
+             />
         </div>
     );
 }
 
-function StringVariableContent() {
+function StringVariableContent(props:{handleValChange: HandleValChangePbPeFuncType, value: PageElementDataType}) {
 
     return (
         <div>
-            <VariableName />
-            <VariableOwner />
-            <Label />
-            <Initial type="string"/>
+            <VariableName handleValChange={props.handleValChange}/>
+            <VariableOwner handleValChange={props.handleValChange}/>
+            <Label handleValChange={props.handleValChange}/>
+            <Initial
+            type="string"
+            handleValChange={props.handleValChange}
+            value={props.value.varInitial as string}
+            />
         </div>
     );
 }
 
-function CurrencyVariableContent() {
+function CurrencyVariableContent(props:{handleValChange: HandleValChangePbPeFuncType, value: PageElementDataType}) {
 
     return (
         <div>
-            <VariableName />
-            <VariableOwner />
-            <Label />
-            <Initial />
-            <IntMin />
-            <IntMax />
+            <VariableName handleValChange={props.handleValChange}/>
+            <VariableOwner handleValChange={props.handleValChange}/>
+            <Label handleValChange={props.handleValChange}/>
+            <Initial
+            handleValChange={props.handleValChange}
+            value={props.value.varInitial as string}
+            />
+            <IntMin
+            handleValChange={props.handleValChange}
+            value={props.value.varMin!}
+            />
+            <IntMax
+            handleValChange={props.handleValChange}
+            value={props.value.varMax!}
+            />
         </div>
     );
 };
 
-function BooleanVariableContent() {
+function BooleanVariableContent(props:{handleValChange: HandleValChangePbPeFuncType, value: PageElementDataType}) {
 
     return (
         <div>
-            <VariableName />
-            <VariableOwner />
-            <Label />
-            <Initial />
+            <VariableName handleValChange={props.handleValChange}/>
+            <VariableOwner handleValChange={props.handleValChange}/>
+            <Label handleValChange={props.handleValChange}/>
+            <Initial
+            handleValChange={props.handleValChange}
+            value={props.value.varInitial as string}
+            />
         </div>
     );
 };
-function PureTextContent() {
+function PureTextContent(props:{handleValChange: HandleValChangePbPeFuncType, value: PageElementDataType}) {
 
     return (
         <div>
-            <VariableName />
-            <Label />
+            <VariableName handleValChange={props.handleValChange}/>
+            <Label handleValChange={props.handleValChange}/>
             <TextareaAutosize
                 aria-label="Copy paste in the text like introduction, context, etc."
                 rowsMin={3}
-                placeholder="Copy paste in the text like introduction, context, etc." />
-            <Initial />
+                placeholder="Copy paste in the text like introduction, context, etc."
+                onChange={(e) => props.handleValChange(e.target.textContent!, "varText")}
+                />
         </div>
     );
 };
@@ -251,15 +283,22 @@ const variableContentMap = {
 }
 
 export default function PageElement(props: {pageBuilder: PageBuilderType,
-    handleValChange: (selectedVarType: VariableType) => void}) {
+    handleValChange: HandleValChangePbPeFuncType}) {
     const [content, setContent] = useState(VariableType.IntegerVariable);
 
     const VariableContentFunc = variableContentMap[content];
     return (
         <div>
             <Paper>
-                <VariableTypeSelect onChange={setContent} />
-                <VariableContentFunc />
+                <VariableTypeSelect
+                    value={props.pageBuilder.data.varType}
+                    onChange={setContent}
+                    handleValChange={props.handleValChange}
+                />
+                <VariableContentFunc
+                    value={props.pageBuilder.data}
+                    handleValChange={props.handleValChange}
+                />
             </Paper>
         </div>
     );

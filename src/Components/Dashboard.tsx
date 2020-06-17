@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
-import { drawerWidth, VariableType, PageBuilderType, PageElementDataType } from './Config';
+import { drawerWidth, VariableType, PageBuilderType, PageElementDataType, HandleValChangeFuncType, HandleValChangePbPeFuncType } from './Config';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -65,12 +65,12 @@ export default function Dashboard() {
     ]);
 
     // Used by each Field in PageElement.
-    const handleValChange = (selectedVarType: VariableType, pageName: string) => {
+    const handleValChange: HandleValChangeFuncType = (val, dataField, pageName) => {
         console.log(pageBuilders);
         console.log(pageName);
         let pbs = pageBuilders.slice().map(pb => {
             if (pb.name.includes(pageName)) {
-                pb.data.varType = selectedVarType;
+                pb.data[dataField]=val;
                 console.log(pb.data.varType);
             }
             return pb;
@@ -128,7 +128,7 @@ export default function Dashboard() {
                 <Container maxWidth="lg">
                     <PageBuilder
                         pageBuilder={pageBuilders.filter(obj => obj.selected)[0]}
-                        handleValChange={(selectedVarType: VariableType) => handleValChange(selectedVarType, pageBuilders.filter(obj => obj.selected)[0].name)}
+                        handleValChange={(val, dataField) => handleValChange(val, dataField, pageBuilders.filter(obj => obj.selected)[0].name)}
                     />
                 </Container>
             </main>
