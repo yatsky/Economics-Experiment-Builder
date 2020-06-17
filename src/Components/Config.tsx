@@ -18,6 +18,7 @@ export type PageElementDataType = {
     varInitial: string | number,
     varMin?: number,
     varMax?: number,
+    varText?: number,
 };
 
 export type PageBuilderType = {
