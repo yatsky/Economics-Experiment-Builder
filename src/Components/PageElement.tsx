@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function VariableTypeSelect(props: {
-    value: string, onChange: (content: VariableType) => void,
+    value: string,
     handleValChange: HandleValChangePbPeFuncType
 }) {
     const classes = useStyles();
@@ -44,7 +44,6 @@ function VariableTypeSelect(props: {
         if (e.target.value) {
             let v = variableTypes[e.target.value as string];
             props.handleValChange(v, "varType");
-            props.onChange(v);
         }
     };
 
@@ -360,15 +359,13 @@ export default function PageElement(props: {
     pageBuilder: PageBuilderType,
     handleValChange: HandleValChangePbPeFuncType
 }) {
-    const [content, setContent] = useState(VariableType.IntegerVariable);
 
-    const VariableContentFunc = variableContentMap[content];
+    const VariableContentFunc = variableContentMap[props.pageBuilder.data.varType];
     return (
         <div>
             <Paper>
                 <VariableTypeSelect
                     value={props.pageBuilder.data.varType}
-                    onChange={setContent}
                     handleValChange={props.handleValChange}
                 />
                 <VariableContentFunc
