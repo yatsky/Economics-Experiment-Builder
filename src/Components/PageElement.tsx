@@ -145,10 +145,8 @@ function Initial({type = "number", handleValChange, value}: { type?: string, han
     // sets the initial value of a variable
     const classes = useStyles();
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        if (e.target.value) {
-            let v = e.target.value as string;
-            handleValChange(v, "varInitial");
-        }
+        let v = e.target.value as string;
+        handleValChange(v, "varInitial");
     };
 
     return (
@@ -174,10 +172,9 @@ function IntMin(props: { handleValChange: HandleValChangePbPeFuncType, value: nu
     const classes = useStyles();
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        if (e.target.value) {
-            let v = e.target.value as string;
-            props.handleValChange(v, "varMin");
-        }
+        let v = e.target.value as string;
+        props.handleValChange(v, "varMin");
+        e.preventDefault();
     };
     return (
         <span>
@@ -202,10 +199,9 @@ function IntMax(props: { handleValChange: HandleValChangePbPeFuncType, value: nu
     const classes = useStyles();
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        if (e.target.value) {
-            let v = e.target.value as string;
-            props.handleValChange(v, "varMax");
-        }
+        let v = e.target.value as string;
+        props.handleValChange(v, "varMax");
+        e.preventDefault();
     };
     return (
         <span>
