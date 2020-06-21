@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -64,7 +64,7 @@ function VariableTypeSelect(props: {
     );
 }
 
-function VariableOwner(props: {value: string, handleValChange: HandleValChangePbPeFuncType }) {
+function VariableOwner(props: { value: string, handleValChange: HandleValChangePbPeFuncType }) {
     const classes = useStyles();
     const owners = ["Subsession", "Group", "Player"];
     const variableOwnerItems = owners.map((val) => <MenuItem value={val} key={val}>{val}</MenuItem>);
@@ -141,7 +141,7 @@ function Label(props: { handleValChange: HandleValChangePbPeFuncType, value: str
     );
 }
 
-function Initial({type = "number", handleValChange, value}: { type?: string, handleValChange: HandleValChangePbPeFuncType, value: string|number }) {
+function Initial({type = "number", handleValChange, value}: { type?: string, handleValChange: HandleValChangePbPeFuncType, value: string | number }) {
     // sets the initial value of a variable
     const classes = useStyles();
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
