@@ -11,6 +11,7 @@ enum VariableType {
 }
 
 export type PageElementDataType = {
+    pageElementId: number,
     varType: VariableType,
     varName: string,
     varOwner?: string,
@@ -24,10 +25,11 @@ export type PageElementDataType = {
 export type PageBuilderType = {
     name: string,
     selected: boolean,
-    data: PageElementDataType,
+    data: PageElementDataType[],
 };
 
-export type HandleValChangePbPeFuncType = (val: VariableType | number | string, dataField: string) => void;
-export type HandleValChangeFuncType = (val: VariableType | number | string, dataField: string, pageName: string) => void;
+export type HandleValChangePbPeFuncType = (pageElementId: number, val: VariableType | number | string, dataField: string) => void;
+export type HandleValChangePeFuncType = (val: VariableType | number | string, dataField: string) => void;
+export type HandleValChangeFuncType = (pageElementId: number, val: VariableType | number | string, dataField: string, pageName: string) => void;
 
 export {drawerWidth, VariableType};

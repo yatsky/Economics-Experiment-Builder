@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import {HandleValChangePbPeFuncType, PageBuilderType, PageElementDataType, VariableType} from './Config';
+import {HandleValChangePeFuncType, PageBuilderType, PageElementDataType, VariableType} from './Config';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function VariableTypeSelect(props: {
     value: string,
-    handleValChange: HandleValChangePbPeFuncType
+    handleValChange: HandleValChangePeFuncType
 }) {
     const classes = useStyles();
 
@@ -64,7 +64,7 @@ function VariableTypeSelect(props: {
     );
 }
 
-function VariableOwner(props: { value: string, handleValChange: HandleValChangePbPeFuncType }) {
+function VariableOwner(props: { value: string, handleValChange: HandleValChangePeFuncType }) {
     const classes = useStyles();
     const owners = ["Subsession", "Group", "Player"];
     const variableOwnerItems = owners.map((val) => <MenuItem value={val} key={val}>{val}</MenuItem>);
@@ -91,7 +91,7 @@ function VariableOwner(props: { value: string, handleValChange: HandleValChangeP
     );
 }
 
-function VariableName(props: { handleValChange: HandleValChangePbPeFuncType, value: string }) {
+function VariableName(props: { handleValChange: HandleValChangePeFuncType, value: string }) {
 
     // sets the name of a variable
     const classes = useStyles();
@@ -115,7 +115,7 @@ function VariableName(props: { handleValChange: HandleValChangePbPeFuncType, val
     );
 }
 
-function Label(props: { handleValChange: HandleValChangePbPeFuncType, value: string }) {
+function Label(props: { handleValChange: HandleValChangePeFuncType, value: string }) {
     // sets the label of a variable
     const classes = useStyles();
 
@@ -141,7 +141,7 @@ function Label(props: { handleValChange: HandleValChangePbPeFuncType, value: str
     );
 }
 
-function Initial({type = "number", handleValChange, value}: { type?: string, handleValChange: HandleValChangePbPeFuncType, value: string | number }) {
+function Initial({type = "number", handleValChange, value}: { type?: string, handleValChange: HandleValChangePeFuncType, value: string | number }) {
     // sets the initial value of a variable
     const classes = useStyles();
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
@@ -167,7 +167,7 @@ function Initial({type = "number", handleValChange, value}: { type?: string, han
     );
 }
 
-function IntMin(props: { handleValChange: HandleValChangePbPeFuncType, value: number }) {
+function IntMin(props: { handleValChange: HandleValChangePeFuncType, value: number }) {
     // sets the mininum value of an integer variable
     const classes = useStyles();
 
@@ -194,7 +194,7 @@ function IntMin(props: { handleValChange: HandleValChangePbPeFuncType, value: nu
     );
 }
 
-function IntMax(props: { handleValChange: HandleValChangePbPeFuncType, value: number }) {
+function IntMax(props: { handleValChange: HandleValChangePeFuncType, value: number }) {
     // sets the mininum value of an integer variable
     const classes = useStyles();
 
@@ -221,7 +221,7 @@ function IntMax(props: { handleValChange: HandleValChangePbPeFuncType, value: nu
     );
 }
 
-function IntegerVariableContent(props: { handleValChange: HandleValChangePbPeFuncType, data: PageElementDataType }) {
+function IntegerVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
 
     return (
         <div>
@@ -250,7 +250,7 @@ function IntegerVariableContent(props: { handleValChange: HandleValChangePbPeFun
     );
 }
 
-function StringVariableContent(props: { handleValChange: HandleValChangePbPeFuncType, data: PageElementDataType }) {
+function StringVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
 
     return (
         <div>
@@ -272,7 +272,7 @@ function StringVariableContent(props: { handleValChange: HandleValChangePbPeFunc
     );
 }
 
-function CurrencyVariableContent(props: { handleValChange: HandleValChangePbPeFuncType, data: PageElementDataType }) {
+function CurrencyVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
 
     return (
         <div>
@@ -301,7 +301,7 @@ function CurrencyVariableContent(props: { handleValChange: HandleValChangePbPeFu
     );
 }
 
-function BooleanVariableContent(props: { handleValChange: HandleValChangePbPeFuncType, data: PageElementDataType }) {
+function BooleanVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
 
     return (
         <div>
@@ -322,7 +322,7 @@ function BooleanVariableContent(props: { handleValChange: HandleValChangePbPeFun
     );
 }
 
-function PureTextContent(props: { handleValChange: HandleValChangePbPeFuncType, data: PageElementDataType }) {
+function PureTextContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
 
     return (
         <div>
@@ -352,21 +352,21 @@ const variableContentMap = {
 }
 
 export default function PageElement(props: {
-    pageBuilder: PageBuilderType,
-    handleValChange: HandleValChangePbPeFuncType
+    data: PageElementDataType,
+    handleValChange: HandleValChangePeFuncType,
 }) {
 
-    const VariableContentFunc = variableContentMap[props.pageBuilder.data.varType];
+    const VariableContentFunc = variableContentMap[props.data.varType];
     return (
         <div>
             <Paper>
                 <VariableTypeSelect
-                    value={props.pageBuilder.data.varType}
+                    value={props.data.varType}
                     handleValChange={props.handleValChange}
                 />
                 <VariableContentFunc
                     handleValChange={props.handleValChange}
-                    data={props.pageBuilder.data}
+                    data={props.data}
                 />
             </Paper>
         </div>

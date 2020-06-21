@@ -55,27 +55,29 @@ export default function Dashboard() {
         {
             name: "Page 1",
             selected: true,
-            data: {
-                varType: VariableType.IntegerVariable,
-                varName: "",
-                varLabel: "",
-                varInitial: "",
-                varOwner: "Subsession",
-                varMin: 0,
-                varMax: 0,
-                varText: "",
-            },
+            data: [
+                {
+                    pageElementId: 1,
+                    varType: VariableType.IntegerVariable,
+                    varName: "",
+                    varLabel: "",
+                    varInitial: "",
+                    varOwner: "Subsession",
+                    varMin: 0,
+                    varMax: 0,
+                    varText: "",
+                }],
         },
     ]);
 
     // Used by each Field in PageElement.
-    const handleValChange: HandleValChangeFuncType = (val, dataField, pageName) => {
+    const handleValChange: HandleValChangeFuncType = (pageElementId,val, dataField, pageName) => {
         console.log(pageBuilders);
         console.log(pageName);
         let pbs = pageBuilders.slice().map(pb => {
             if (pb.name.includes(pageName)) {
-                pb.data[dataField] = val;
-                console.log(pb.data.varType);
+                pb.data[pageElementId][dataField] = val;
+                console.log(pb.data[pageElementId].varType);
             }
             return pb;
         });
@@ -89,7 +91,8 @@ export default function Dashboard() {
             {
                 name: pageName,
                 selected: false,
-                data: {
+                data: [{
+                    pageElementId: 1,
                     varType: VariableType.IntegerVariable,
                     varName: "",
                     varLabel: "",
@@ -98,7 +101,7 @@ export default function Dashboard() {
                     varMin: 0,
                     varMax: 0,
                     varText: "",
-                },
+                }],
             }
         );
         setPageBuilders(pbs);
@@ -136,7 +139,7 @@ export default function Dashboard() {
                 <Container maxWidth="lg">
                     <PageBuilder
                         pageBuilder={pageBuilders.filter(obj => obj.selected)[0]}
-                        handleValChange={(val, dataField) => handleValChange(val, dataField, pageBuilders.filter(obj => obj.selected)[0].name)}
+                        handleValChange={(pageElementId, val, dataField) => handleValChange(pageElementId, val, dataField, pageBuilders.filter(obj => obj.selected)[0].name)}
                     />
                 </Container>
             </main>

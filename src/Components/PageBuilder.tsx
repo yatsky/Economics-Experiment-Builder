@@ -22,6 +22,13 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 export default function PageBuilder(props: { pageBuilder: PageBuilderType, handleValChange: HandleValChangePbPeFuncType }) {
     const classes = useStyles();
+
+    let pes = props.pageBuilder.data.map((data, idx) => {
+        return(
+            <PageElement data={data} handleValChange={(val, dataField) => props.handleValChange(idx, val, dataField)}/>
+        )
+    })
+
     return (
         <Box border={1}>
             <AppBar position="sticky">
@@ -30,7 +37,7 @@ export default function PageBuilder(props: { pageBuilder: PageBuilderType, handl
             <Grid container>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                        <PageElement pageBuilder={props.pageBuilder} handleValChange={props.handleValChange}/>
+                        {pes}
                     </Paper>
                 </Grid>
             </Grid>
