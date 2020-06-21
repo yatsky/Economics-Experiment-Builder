@@ -61,6 +61,9 @@ export default function Dashboard() {
                 varLabel: "",
                 varInitial: "",
                 varOwner: "Subsession",
+                varMin: 0,
+                varMax: 0,
+                varText: "",
             },
         },
     ]);
@@ -92,6 +95,9 @@ export default function Dashboard() {
                     varLabel: "",
                     varInitial: "",
                     varOwner: "Subsession",
+                    varMin: 0,
+                    varMax: 0,
+                    varText: "",
                 },
             }
         );
