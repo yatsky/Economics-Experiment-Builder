@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
-export default function MyToolbar() {
+export default function MyToolbar(props: {handleClick: (btnName: string) => void}) {
     const classes = useStyles();
     const buttons = ["Add", "Delete", "Help"].map((val) => {
         const MyIcon = iconMap[val];
@@ -35,6 +35,7 @@ export default function MyToolbar() {
             <ToolbarButton className={classes.menuButton} icon={<MyIcon/>}
                            key={val}
                            buttonLabel={val}
+                           handleClick={() => props.handleClick(val)}
             />
         );
     });

@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
-import {drawerWidth, HandleValChangeFuncType, PageBuilderType, VariableType} from './Config';
+import {drawerWidth, HandleValChangeFuncType, PageBuilderType, PageElementDataType, VariableType} from './Config';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -85,6 +85,33 @@ export default function Dashboard() {
         setPageBuilders(pbs);
     };
 
+    // Toolbar click
+    const handleToolbarBtnClick: (pageName: string, btnName: string) => void = (pageName, btnName) => {
+        let pbs = pageBuilders.slice();
+        let pb = pbs.filter(pb => pb.selected)[0];
+
+        if(btnName.includes("Add")){
+            pb.data.push(
+                {
+                    pageElementId: pb.data.length,
+                    varType: VariableType.IntegerVariable,
+                    varName: "",
+                    varLabel: "",
+                    varInitial: "",
+                    varOwner: "Subsession",
+                    varMin: 0,
+                    varMax: 0,
+                    varText: "",
+                },
+            );
+        }
+        else{
+            pb.data.pop();
+        }
+
+        setPageBuilders(pbs);
+    };
+
     const addPageBuilder = (pageName: string) => {
         let pbs = pageBuilders.slice();
         pbs.push(
@@ -119,6 +146,7 @@ export default function Dashboard() {
         setPageBuilders(newPBs);
     };
 
+    let curPb = pageBuilders.filter(obj => obj.selected)[0];
     return (
         <div className={classes.root}>
             <AppBar className={classes.appBar} position="static">
@@ -138,8 +166,9 @@ export default function Dashboard() {
             <main className={classes.content}>
                 <Container maxWidth="lg">
                     <PageBuilder
-                        pageBuilder={pageBuilders.filter(obj => obj.selected)[0]}
-                        handleValChange={(pageElementId, val, dataField) => handleValChange(pageElementId, val, dataField, pageBuilders.filter(obj => obj.selected)[0].name)}
+                        pageBuilder={curPb}
+                        handleValChange={(pageElementId, val, dataField) => handleValChange(pageElementId, val, dataField, curPb.name)}
+                        handleToolbarBtnClick={(btnName) => handleToolbarBtnClick(curPb.name, btnName)}
                     />
                 </Container>
             </main>

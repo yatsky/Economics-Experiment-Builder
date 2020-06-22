@@ -5,6 +5,7 @@ export default function ToolbarButton(props: {
     icon: JSX.Element,
     buttonLabel: string,
     className: string,
+    handleClick: () => void,
 }) {
     return (
         <Button
@@ -12,6 +13,7 @@ export default function ToolbarButton(props: {
             variant="contained"
             color="secondary"
             startIcon={props.icon}
+            onClick={props.handleClick}
         >
             {props.buttonLabel}
         </Button>

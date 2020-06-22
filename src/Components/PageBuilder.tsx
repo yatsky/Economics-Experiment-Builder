@@ -20,11 +20,14 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
-export default function PageBuilder(props: { pageBuilder: PageBuilderType, handleValChange: HandleValChangePbPeFuncType }) {
+export default function PageBuilder(props: {
+    pageBuilder: PageBuilderType, handleValChange: HandleValChangePbPeFuncType,
+    handleToolbarBtnClick: (btnName: string) => void,
+}) {
     const classes = useStyles();
 
     let pes = props.pageBuilder.data.map((data, idx) => {
-        return(
+        return (
             <PageElement data={data} handleValChange={(val, dataField) => props.handleValChange(idx, val, dataField)}/>
         )
     })
@@ -32,7 +35,7 @@ export default function PageBuilder(props: { pageBuilder: PageBuilderType, handl
     return (
         <Box border={1}>
             <AppBar position="sticky">
-                <MyToolbar/>
+                <MyToolbar handleClick={props.handleToolbarBtnClick}/>
             </AppBar>
             <Grid container>
                 <Grid item xs={12}>
