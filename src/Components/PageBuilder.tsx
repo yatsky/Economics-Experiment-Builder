@@ -28,7 +28,11 @@ export default function PageBuilder(props: {
 
     let pes = props.pageBuilder.data.map((data, idx) => {
         return (
-            <PageElement key={idx} data={data} handleValChange={(val, dataField) => props.handleValChange(idx, val, dataField)}/>
+            <PageElement
+                key={idx}
+                data={data}
+                handleValChange={(val, dataField) => props.handleValChange(idx, val, dataField)}
+            />
         )
     })
 
