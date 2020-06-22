@@ -112,14 +112,17 @@ export default function Dashboard() {
         setPageBuilders(pbs);
     };
 
-    const savePageNameChange: (oldName: string, newName: string) => void =(oldName, newName) => {
+    const savePageNameChange: (idx: number, newName: string) => boolean =(idx, newName) => {
         let pbs = pageBuilders.slice();
 
         // check if newName exists already
+        // skip checking for pb itself
+        if(pbs.filter((pb, index) => pb.name === newName && index !== idx).length > 0) return false;
 
-        let pb = pbs.filter(pb => pb.name === oldName)[0];
+        let pb = pbs.filter((pb, index) => index === idx)[0];
         pb.name = newName;
         setPageBuilders(pbs);
+        return true
     };
 
     const handlePageNameChange: (oldName: string, newName: string) => void =(oldName, newName) => {
@@ -180,6 +183,7 @@ export default function Dashboard() {
                 addPageBuilder={addPageBuilder}
                 removePageBuilder={removePageBuilder}
                 handlePageNameChange={handlePageNameChange}
+                savePageNameChange={savePageNameChange}
             />
             <main className={classes.content}>
                 <Container maxWidth="lg">

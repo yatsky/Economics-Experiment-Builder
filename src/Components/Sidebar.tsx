@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -47,8 +47,21 @@ const iconMap = {
 function PageButton(props: {
     pb: PageBuilderType,
     handlePageClick: (pageName: string) => void,
-    handlePageNameChange: (e: React.ChangeEvent<{value: string}>, pageName: string) => void},
+    handlePageNameChange: (e: React.ChangeEvent<{value: string}>, pageName: string) => void,
+    savePageNameChange: (newPageName: string) => boolean,
+                    }
                     ) {
+
+    let [oldName, setOldName] = useState(props.pb.name);
+
+    const handleOnFocus = (e: React.FocusEvent<{value: string}>) => {
+        setOldName(props.pb.name);
+    }
+
+    const handleOnBlur = (e: React.FocusEvent<{value: string}>) => {
+        let success = props.savePageNameChange(e.target.value);
+        if (!success) props.savePageNameChange(oldName);
+    }
 
     const classes=useStyles();
 
@@ -62,6 +75,8 @@ function PageButton(props: {
             <ListItem selected={props.pb.selected}>
                 <RadioButtonUncheckedIcon onClick={() => props.handlePageClick(props.pb.name)} />
                 <TextField value={props.pb.name} onChange={(e) => props.handlePageNameChange(e, props.pb.name)}
+                           onFocus={handleOnFocus}
+                           onBlur={handleOnBlur}
                 />
             </ListItem>
         </Paper>
@@ -72,6 +87,7 @@ export default function Sidebar(props: {
     pageBuilders: any[], onPageClick: (pageName: string) => void, addPageBuilder: (pageName: string) => void,
     removePageBuilder: () => void,
     handlePageNameChange: (oldName: string, newName: string) => void,
+    savePageNameChange: (index: number, newName: string) => boolean,
 }) {
 
     const classes = useStyles();
@@ -127,6 +143,7 @@ export default function Sidebar(props: {
                                                                     pb={pb}
                                                                     handlePageNameChange={handlePageNameChange}
                                                                     handlePageClick={handlePageClick}
+                                                                    savePageNameChange={(newName: string) => props.savePageNameChange(index, newName)}
                                                                 />
     );
 
