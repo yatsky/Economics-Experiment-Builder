@@ -322,13 +322,18 @@ function BooleanVariableContent(props: { handleValChange: HandleValChangePeFuncT
 
 function PureTextContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
 
+    const handleChange = (e: React.ChangeEvent<{value: string}>) => {
+        props.handleValChange(e.target.value!, "varText");
+        e.preventDefault();
+    };
+
     return (
         <div>
             <TextareaAutosize
                 aria-label="Copy paste in the text like introduction, context, etc."
                 rowsMin={3}
                 placeholder="Copy paste in the text like introduction, context, etc."
-                onChange={(e) => props.handleValChange(e.target.textContent!, "varText")}
+                onChange={handleChange}
             />
         </div>
     );
