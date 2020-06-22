@@ -111,7 +111,7 @@ export default function Sidebar(props: {
                 <List>
                     {props.pageBuilders.map((pb, index) => (
                         <Paper key={pb.name} className={classes.menuButton}>
-                            <ListItem button onClick={handlePageClick}>
+                            <ListItem button onClick={handlePageClick} selected={pb.selected}>
                                 <ListItemText primary={pb.name}/>
                             </ListItem>
                         </Paper>
