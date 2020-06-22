@@ -324,12 +324,6 @@ function PureTextContent(props: { handleValChange: HandleValChangePeFuncType, da
 
     return (
         <div>
-            <VariableName
-                value={props.data.varName}
-                handleValChange={props.handleValChange}/>
-            <Label
-                value={props.data.varLabel}
-                handleValChange={props.handleValChange}/>
             <TextareaAutosize
                 aria-label="Copy paste in the text like introduction, context, etc."
                 rowsMin={3}
