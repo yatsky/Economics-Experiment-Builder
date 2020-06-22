@@ -10,10 +10,11 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Toolbar from '@material-ui/core/Toolbar';
-import {drawerWidth} from './Config';
+import {drawerWidth, PageBuilderType} from './Config';
 import EditIcon from '@material-ui/icons/Edit';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import TextField from "@material-ui/core/TextField";
+import PageBuilder from "./PageBuilder";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -42,6 +43,31 @@ const iconMap = {
     "Add": AddIcon,
     "Delete": DeleteIcon,
 }
+
+function PageButton(props: {
+    pb: PageBuilderType,
+    handlePageClick: (pageName: string) => void,
+    handlePageNameChange: (e: React.ChangeEvent<{value: string}>, pageName: string) => void},
+                    ) {
+
+    const classes=useStyles();
+
+    return (
+        // I used page name as the key but apparently it changes and in that case,
+        // React will re-render everything since it cannot track it via its key.
+        // Hence the TextField will lose focus.
+        // So we use index to be the key to prevent re-render when the page name is changed.
+        // see: https://stackoverflow.com/questions/42573017/in-react-es6-why-does-the-input-field-lose-focus-after-typing-a-character#:~:text=it%20is%20because%20you%20are,function%20into%20your%20render%20directly.
+        <Paper  className={classes.menuButton}>
+            <ListItem selected={props.pb.selected}>
+                <RadioButtonUncheckedIcon onClick={() => props.handlePageClick(props.pb.name)} />
+                <TextField value={props.pb.name} onChange={(e) => props.handlePageNameChange(e, props.pb.name)}
+                />
+            </ListItem>
+        </Paper>
+    )
+}
+
 export default function Sidebar(props: {
     pageBuilders: any[], onPageClick: (pageName: string) => void, addPageBuilder: (pageName: string) => void,
     removePageBuilder: () => void,
@@ -97,20 +123,12 @@ export default function Sidebar(props: {
         );
     });
 
-    const pages = props.pageBuilders.map((pb, index) => (
-        // I used page name as the key but apparently it changes and in that case,
-        // React will re-render everything since it cannot track it via its key.
-        // Hence the TextField will lose focus.
-        // So we use index to be the key to prevent re-render when the page name is changed.
-        // see: https://stackoverflow.com/questions/42573017/in-react-es6-why-does-the-input-field-lose-focus-after-typing-a-character#:~:text=it%20is%20because%20you%20are,function%20into%20your%20render%20directly.
-            <Paper key={index} className={classes.menuButton}>
-                <ListItem selected={pb.selected}>
-                    <RadioButtonUncheckedIcon onClick={() => handlePageClick(pb.name)} />
-                    <TextField value={pb.name} onChange={(e) => handlePageNameChange(e, pb.name)}
-                    />
-                </ListItem>
-            </Paper>
-        ));
+    const pages = props.pageBuilders.map((pb, index) => <PageButton key={index}
+                                                                    pb={pb}
+                                                                    handlePageNameChange={handlePageNameChange}
+                                                                    handlePageClick={handlePageClick}
+                                                                />
+    );
 
 
     return (
