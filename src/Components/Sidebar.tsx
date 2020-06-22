@@ -13,6 +13,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import {drawerWidth, PageBuilderType} from './Config';
 import EditIcon from '@material-ui/icons/Edit';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import TextField from "@material-ui/core/TextField";
 import PageBuilder from "./PageBuilder";
 
@@ -73,7 +74,10 @@ function PageButton(props: {
         // see: https://stackoverflow.com/questions/42573017/in-react-es6-why-does-the-input-field-lose-focus-after-typing-a-character#:~:text=it%20is%20because%20you%20are,function%20into%20your%20render%20directly.
         <Paper  className={classes.menuButton}>
             <ListItem selected={props.pb.selected}>
-                <RadioButtonUncheckedIcon onClick={() => props.handlePageClick(props.pb.name)} />
+                {
+                    props.pb.selected ? <RadioButtonCheckedIcon /> :
+                        <RadioButtonUncheckedIcon onClick={() => props.handlePageClick(props.pb.name)} />
+                }
                 <TextField value={props.pb.name} onChange={(e) => props.handlePageNameChange(e, props.pb.name)}
                            onFocus={handleOnFocus}
                            onBlur={handleOnBlur}
