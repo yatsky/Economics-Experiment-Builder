@@ -322,7 +322,7 @@ function BooleanVariableContent(props: { handleValChange: HandleValChangePeFuncT
 
 function PureTextContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
 
-    const handleChange = (e: React.ChangeEvent<{value: string}>) => {
+    const handleChange = (e: React.ChangeEvent<{ value: string }>) => {
         props.handleValChange(e.target.value!, "varText");
         e.preventDefault();
     };

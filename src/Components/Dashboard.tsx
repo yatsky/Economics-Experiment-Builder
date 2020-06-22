@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
-import {drawerWidth, HandleValChangeFuncType, PageBuilderType, PageElementDataType, VariableType} from './Config';
+import {drawerWidth, HandleValChangeFuncType, PageBuilderType, VariableType} from './Config';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -71,7 +71,7 @@ export default function Dashboard() {
     ]);
 
     // Used by each Field in PageElement.
-    const handleValChange: HandleValChangeFuncType = (pageElementId,val, dataField, pageName) => {
+    const handleValChange: HandleValChangeFuncType = (pageElementId, val, dataField, pageName) => {
         console.log(pageBuilders);
         console.log(pageName);
         let pbs = pageBuilders.slice().map(pb => {
@@ -90,7 +90,7 @@ export default function Dashboard() {
         let pbs = pageBuilders.slice();
         let pb = pbs.filter(pb => pb.selected)[0];
 
-        if(btnName.includes("Add")){
+        if (btnName.includes("Add")) {
             pb.data.push(
                 {
                     pageElementId: pb.data.length,
@@ -104,20 +104,19 @@ export default function Dashboard() {
                     varText: "",
                 },
             );
-        }
-        else{
+        } else {
             pb.data.pop();
         }
 
         setPageBuilders(pbs);
     };
 
-    const savePageNameChange: (idx: number, newName: string) => boolean =(idx, newName) => {
+    const savePageNameChange: (idx: number, newName: string) => boolean = (idx, newName) => {
         let pbs = pageBuilders.slice();
 
         // check if newName exists already
         // skip checking for pb itself
-        if(pbs.filter((pb, index) => pb.name === newName && index !== idx).length > 0) return false;
+        if (pbs.filter((pb, index) => pb.name === newName && index !== idx).length > 0) return false;
 
         let pb = pbs.filter((pb, index) => index === idx)[0];
         pb.name = newName;
@@ -125,7 +124,7 @@ export default function Dashboard() {
         return true
     };
 
-    const handlePageNameChange: (oldName: string, newName: string) => void =(oldName, newName) => {
+    const handlePageNameChange: (oldName: string, newName: string) => void = (oldName, newName) => {
         let pbs = pageBuilders.slice();
         let pb = pbs.filter(pb => pb.name === oldName)[0];
         pb.name = newName;

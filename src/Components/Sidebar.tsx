@@ -5,17 +5,14 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import Paper from '@material-ui/core/Paper';
-import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Toolbar from '@material-ui/core/Toolbar';
 import {drawerWidth, PageBuilderType} from './Config';
-import EditIcon from '@material-ui/icons/Edit';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import TextField from "@material-ui/core/TextField";
-import PageBuilder from "./PageBuilder";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -46,25 +43,25 @@ const iconMap = {
 }
 
 function PageButton(props: {
-    pb: PageBuilderType,
-    handlePageClick: (pageName: string) => void,
-    handlePageNameChange: (e: React.ChangeEvent<{value: string}>, pageName: string) => void,
-    savePageNameChange: (newPageName: string) => boolean,
+                        pb: PageBuilderType,
+                        handlePageClick: (pageName: string) => void,
+                        handlePageNameChange: (e: React.ChangeEvent<{ value: string }>, pageName: string) => void,
+                        savePageNameChange: (newPageName: string) => boolean,
                     }
-                    ) {
+) {
 
     let [oldName, setOldName] = useState(props.pb.name);
 
-    const handleOnFocus = (e: React.FocusEvent<{value: string}>) => {
+    const handleOnFocus = (e: React.FocusEvent<{ value: string }>) => {
         setOldName(props.pb.name);
     }
 
-    const handleOnBlur = (e: React.FocusEvent<{value: string}>) => {
+    const handleOnBlur = (e: React.FocusEvent<{ value: string }>) => {
         let success = props.savePageNameChange(e.target.value);
         if (!success) props.savePageNameChange(oldName);
     }
 
-    const classes=useStyles();
+    const classes = useStyles();
 
     return (
         // I used page name as the key but apparently it changes and in that case,
@@ -72,11 +69,11 @@ function PageButton(props: {
         // Hence the TextField will lose focus.
         // So we use index to be the key to prevent re-render when the page name is changed.
         // see: https://stackoverflow.com/questions/42573017/in-react-es6-why-does-the-input-field-lose-focus-after-typing-a-character#:~:text=it%20is%20because%20you%20are,function%20into%20your%20render%20directly.
-        <Paper  className={classes.menuButton}>
+        <Paper className={classes.menuButton}>
             <ListItem selected={props.pb.selected}>
                 {
-                    props.pb.selected ? <RadioButtonCheckedIcon /> :
-                        <RadioButtonUncheckedIcon onClick={() => props.handlePageClick(props.pb.name)} />
+                    props.pb.selected ? <RadioButtonCheckedIcon/> :
+                        <RadioButtonUncheckedIcon onClick={() => props.handlePageClick(props.pb.name)}/>
                 }
                 <TextField value={props.pb.name} onChange={(e) => props.handlePageNameChange(e, props.pb.name)}
                            onFocus={handleOnFocus}
@@ -105,7 +102,7 @@ export default function Sidebar(props: {
         props.onPageClick(pageName);
     }
 
-    const handlePageNameChange = (e: React.ChangeEvent<{value: string}>, oldName: string) => {
+    const handlePageNameChange = (e: React.ChangeEvent<{ value: string }>, oldName: string) => {
         props.handlePageNameChange(oldName, e.target.value)
         e.preventDefault();
     }
@@ -148,7 +145,7 @@ export default function Sidebar(props: {
                                                                     handlePageNameChange={handlePageNameChange}
                                                                     handlePageClick={handlePageClick}
                                                                     savePageNameChange={(newName: string) => props.savePageNameChange(index, newName)}
-                                                                />
+        />
     );
 
 
