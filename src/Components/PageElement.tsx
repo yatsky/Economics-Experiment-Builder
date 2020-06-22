@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import {HandleValChangePeFuncType, PageBuilderType, PageElementDataType, VariableType} from './Config';
+import {HandleValChangePeFuncType, PageElementDataType, VariableType} from './Config';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -41,10 +41,8 @@ function VariableTypeSelect(props: {
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
         // Why does the for loop changes the type of variableType to string?
         // for(let variableType in VariableType){
-        if (e.target.value) {
-            let v = variableTypes[e.target.value as string];
-            props.handleValChange(v, "varType");
-        }
+        let v = variableTypes[e.target.value as string];
+        props.handleValChange(v, "varType");
     };
 
     const variableTypeItems = Object.keys(variableTypes).map((val) => <MenuItem value={variableTypes[val]}
@@ -71,10 +69,8 @@ function VariableOwner(props: { value: string, handleValChange: HandleValChangeP
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
         // Why does the for loop changes the type of variableType to string?
         // for(let variableType in VariableType){
-        if (e.target.value) {
-            let v = e.target.value as string;
-            props.handleValChange(v, "varOwner");
-        }
+        let v = e.target.value as string;
+        props.handleValChange(v, "varOwner");
     };
     return (
         <div className={classes.element}>
@@ -97,10 +93,8 @@ function VariableName(props: { handleValChange: HandleValChangePeFuncType, value
     const classes = useStyles();
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        if (e.target.value) {
-            let v = e.target.value as string;
-            props.handleValChange(v, "varName");
-        }
+        let v = e.target.value as string;
+        props.handleValChange(v, "varName");
     };
     return (
         <span>
@@ -120,10 +114,8 @@ function Label(props: { handleValChange: HandleValChangePeFuncType, value: strin
     const classes = useStyles();
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
-        if (e.target.value) {
-            let v = e.target.value as string;
-            props.handleValChange(v, "varLabel");
-        }
+        let v = e.target.value as string;
+        props.handleValChange(v, "varLabel");
     };
     return (
         <span>
