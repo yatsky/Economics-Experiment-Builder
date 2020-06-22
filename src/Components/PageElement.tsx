@@ -21,6 +21,12 @@ const useStyles = makeStyles((theme: Theme) =>
         element: {
             display: "inline",
         },
+        paper: {
+            padding: theme.spacing(2),
+            textAlign: 'center',
+            color: theme.palette.text.secondary,
+            marginBottom: theme.spacing(1),
+        },
     }),
 );
 
@@ -348,10 +354,11 @@ export default function PageElement(props: {
     handleValChange: HandleValChangePeFuncType,
 }) {
 
+    const classes = useStyles();
     const VariableContentFunc = variableContentMap[props.data.varType];
     return (
         <div>
-            <Paper>
+            <Paper className={classes.paper}>
                 <VariableTypeSelect
                     value={props.data.varType}
                     handleValChange={props.handleValChange}
