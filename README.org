@@ -1,0 +1,17 @@
+* Introduction
+This project is built with the hope to standardize part of the process of Economics Experiment development.
+
+In my experience developing experiments for researchers, one pain point
+is that it is hard for everyone to put our thoughts into actionable instructions.
+For example, researchers often give me a project that does not specify the variables that they need, or they did not know at the time that they would need it. They only come to me later and ask if it is possible to add a few more variables.
+Usually it is easy to do so, but doing it takes valuable time and it's quite boring.
+
+Using this experiment builder, researchers now will be forced to decide what they want before they submit a request for coding.
+
+A basic interface will be built by researchers to /emulate/ how the experiment should be conducted in a web browser, instead of them writing a long document full of text that /describes/ how the experiment should be conducted.
+
+This emulation then gets translated into standardized code that can be used almost instantly in oTree.
+All that is left is the main logic that cannot be set up by the researchers.
+
+I'm aware of the existence of oTreeHub, but have not tried it myself.
+Broadly speaking, compared to oTreeHub, this is more of tool that helps researchers connect with developers.
