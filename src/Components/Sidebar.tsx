@@ -11,6 +11,9 @@ import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Toolbar from '@material-ui/core/Toolbar';
 import {drawerWidth} from './Config';
+import EditIcon from '@material-ui/icons/Edit';
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -41,7 +44,8 @@ const iconMap = {
 }
 export default function Sidebar(props: {
     pageBuilders: any[], onPageClick: (pageName: string) => void, addPageBuilder: (pageName: string) => void,
-    removePageBuilder: () => void
+    removePageBuilder: () => void,
+    handlePageNameChange: (oldName: string, newName: string) => void,
 }) {
 
     const classes = useStyles();
@@ -51,8 +55,13 @@ export default function Sidebar(props: {
         if (action.includes("Delete")) props.removePageBuilder();
     };
 
-    const handlePageClick = (e: React.MouseEvent) => {
-        props.onPageClick(e.currentTarget.textContent!);
+    const handlePageClick = (pageName: string) => {
+        props.onPageClick(pageName);
+    }
+
+    const handlePageNameChange = (e: React.ChangeEvent<{value: string}>, oldName: string) => {
+        props.handlePageNameChange(oldName, e.target.value)
+        e.preventDefault();
     }
 
     const saveData = () => {
@@ -87,6 +96,23 @@ export default function Sidebar(props: {
             </Button>
         );
     });
+
+    const pages = props.pageBuilders.map((pb, index) => (
+        // I used page name as the key but apparently it changes and in that case,
+        // React will re-render everything since it cannot track it via its key.
+        // Hence the TextField will lose focus.
+        // So we use index to be the key to prevent re-render when the page name is changed.
+        // see: https://stackoverflow.com/questions/42573017/in-react-es6-why-does-the-input-field-lose-focus-after-typing-a-character#:~:text=it%20is%20because%20you%20are,function%20into%20your%20render%20directly.
+            <Paper key={index} className={classes.menuButton}>
+                <ListItem selected={pb.selected}>
+                    <RadioButtonUncheckedIcon onClick={() => handlePageClick(pb.name)} />
+                    <TextField value={pb.name} onChange={(e) => handlePageNameChange(e, pb.name)}
+                    />
+                </ListItem>
+            </Paper>
+        ));
+
+
     return (
         <Drawer
             className={classes.drawer}
@@ -109,13 +135,7 @@ export default function Sidebar(props: {
                 </List>
                 <Divider/>
                 <List>
-                    {props.pageBuilders.map((pb, index) => (
-                        <Paper key={pb.name} className={classes.menuButton}>
-                            <ListItem button onClick={handlePageClick} selected={pb.selected}>
-                                <ListItemText primary={pb.name}/>
-                            </ListItem>
-                        </Paper>
-                    ))}
+                    {pages}
                 </List>
             </div>
         </Drawer>
