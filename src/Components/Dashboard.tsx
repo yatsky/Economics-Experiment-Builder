@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
 import {drawerWidth, HandleValChangeFuncType, PageBuilderType, VariableType} from './Config';
+import SimpleModal from "./SimpleModal";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -50,6 +51,11 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function Dashboard() {
     const classes = useStyles();
 
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const handleModalClose = () => {
+        setModalOpen(false);
+    }
 
     const [pageBuilders, setPageBuilders] = useState<PageBuilderType[]>([
         {
@@ -104,8 +110,10 @@ export default function Dashboard() {
                     varText: "",
                 },
             );
-        } else {
+        } else if (btnName.includes("Delete")){
             pb.data.pop();
+        } else{
+            setModalOpen(true);
         }
 
         setPageBuilders(pbs);
@@ -193,6 +201,7 @@ export default function Dashboard() {
                     />
                 </Container>
             </main>
+            <SimpleModal modalOpen={modalOpen} handleClose={handleModalClose}/>
         </div>
     );
 }
