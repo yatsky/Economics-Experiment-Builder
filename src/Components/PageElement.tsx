@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import {HandleValChangePeFuncType, PageElementDataType, VariableType} from './Config';
+import {HandleValChangePeFuncType, PageElementType, VariableType} from './Config';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -219,7 +219,7 @@ function IntMax(props: { handleValChange: HandleValChangePeFuncType, value: numb
     );
 }
 
-function IntegerVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
+function IntegerVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementType }) {
 
     return (
         <div>
@@ -248,7 +248,7 @@ function IntegerVariableContent(props: { handleValChange: HandleValChangePeFuncT
     );
 }
 
-function StringVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
+function StringVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementType }) {
 
     return (
         <div>
@@ -270,7 +270,7 @@ function StringVariableContent(props: { handleValChange: HandleValChangePeFuncTy
     );
 }
 
-function CurrencyVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
+function CurrencyVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementType }) {
 
     return (
         <div>
@@ -299,7 +299,7 @@ function CurrencyVariableContent(props: { handleValChange: HandleValChangePeFunc
     );
 }
 
-function BooleanVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
+function BooleanVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementType }) {
 
     return (
         <div>
@@ -320,7 +320,7 @@ function BooleanVariableContent(props: { handleValChange: HandleValChangePeFuncT
     );
 }
 
-function PureTextContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
+function PureTextContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementType }) {
 
     const handleChange = (e: React.ChangeEvent<{ value: string }>) => {
         props.handleValChange(e.target.value!, "varText");
@@ -349,7 +349,7 @@ const variableContentMap = {
 }
 
 export default function PageElement(props: {
-    data: PageElementDataType,
+    data: PageElementType,
     handleValChange: HandleValChangePeFuncType,
 }) {
 

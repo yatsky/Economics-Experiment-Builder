@@ -15,7 +15,7 @@ export enum WidgetType {
     HRadioSelect= "Horizontal radio style selection button",
 }
 
-export type PageElementDataType = {
+export type PageElementType = {
     pageElementId: number,
     varType: VariableType,
     varName: string,
@@ -31,7 +31,7 @@ export type PageElementDataType = {
 export type PageBuilderType = {
     name: string,
     selected: boolean,
-    data: PageElementDataType[],
+    data: PageElementType[],
 };
 
 export type HandleValChangePbPeFuncType = (pageElementId: number, val: VariableType | number | string, dataField: string) => void;
