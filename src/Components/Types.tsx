@@ -1,4 +1,3 @@
-
 // VariableType for PageElement
 enum VariableType {
     StringVariable = "String Variable",
@@ -10,8 +9,8 @@ enum VariableType {
 }
 
 export enum WidgetType {
-    VRadioSelect= "Vertical radio style selection button",
-    HRadioSelect= "Horizontal radio style selection button",
+    VRadioSelect = "Vertical radio style selection button",
+    HRadioSelect = "Horizontal radio style selection button",
 }
 
 export type PageElementType = {

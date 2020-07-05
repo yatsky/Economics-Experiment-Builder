@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import PageElement from './PageElement';
 import MyToolbar from './MyToolbar';
 import AppBar from '@material-ui/core/AppBar';

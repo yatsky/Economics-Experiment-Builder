@@ -1,17 +1,13 @@
 import React, {useState} from 'react';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
-import {WidgetType, HandleValChangeFuncType, PageBuilderType, VariableType} from './Types';
+import {HandleValChangeFuncType, PageBuilderType, VariableType, WidgetType} from './Types';
 import SimpleModal from "./SimpleModal";
 import useStyles from "./Styles";
-import drawerWidth from "./Styles";
-
-
 
 
 export default function Dashboard() {
@@ -78,9 +74,9 @@ export default function Dashboard() {
                     varWidget: WidgetType.HRadioSelect,
                 },
             );
-        } else if (btnName.includes("Delete")){
+        } else if (btnName.includes("Delete")) {
             pb.data.pop();
-        } else{
+        } else {
             setModalOpen(true);
         }
 
