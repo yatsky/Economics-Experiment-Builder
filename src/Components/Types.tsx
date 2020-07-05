@@ -1,4 +1,3 @@
-const drawerWidth = 140;
 
 // VariableType for PageElement
 enum VariableType {
@@ -45,4 +44,4 @@ export type HandleValChangePbPeFuncType = (pageElementId: number, val: VariableT
 export type HandleValChangePeFuncType = (val: VariableType | number | string, dataField: string) => void;
 export type HandleValChangeFuncType = (pageElementId: number, val: VariableType | number | string, dataField: string, pageName: string) => void;
 
-export {drawerWidth, VariableType};
+export {VariableType};

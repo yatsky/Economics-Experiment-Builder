@@ -9,11 +9,11 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Toolbar from '@material-ui/core/Toolbar';
-import {drawerWidth, PageBuilderType} from './Types';
+import {PageBuilderType} from './Types';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import TextField from "@material-ui/core/TextField";
-import useStyles from "./Styles";
+import useStyles, {drawerWidth} from "./Styles";
 
 
 const iconMap = {
