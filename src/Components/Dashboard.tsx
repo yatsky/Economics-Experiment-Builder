@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
-import {drawerWidth, HandleValChangeFuncType, PageBuilderType, VariableType} from './Config';
+import {drawerWidth, WidgetType, HandleValChangeFuncType, PageBuilderType, VariableType} from './Config';
 import SimpleModal from "./SimpleModal";
 
 
@@ -72,6 +72,7 @@ export default function Dashboard() {
                     varMin: 0,
                     varMax: 0,
                     varText: "",
+                    varWidget: WidgetType.HRadioSelect,
                 }],
         },
     ]);
@@ -108,6 +109,7 @@ export default function Dashboard() {
                     varMin: 0,
                     varMax: 0,
                     varText: "",
+                    varWidget: WidgetType.HRadioSelect,
                 },
             );
         } else if (btnName.includes("Delete")){
@@ -155,6 +157,7 @@ export default function Dashboard() {
                     varMin: 0,
                     varMax: 0,
                     varText: "",
+                    varWidget: WidgetType.HRadioSelect,
                 }],
             }
         );

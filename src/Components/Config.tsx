@@ -10,6 +10,11 @@ enum VariableType {
     PureText = "Text",
 }
 
+export enum WidgetType {
+    VRadioSelect= "Vertical radio style selection button",
+    HRadioSelect= "Horizontal radio style selection button",
+}
+
 export type PageElementDataType = {
     pageElementId: number,
     varType: VariableType,
@@ -20,6 +25,7 @@ export type PageElementDataType = {
     varMin?: number,
     varMax?: number,
     varText?: string,
+    varWidget: WidgetType,
 };
 
 export type PageBuilderType = {
