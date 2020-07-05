@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import {HandleValChangePeFuncType, PageElementSubElementPropsType, PageElementType, VariableType} from './Config';
+import {HandleValChangePeFuncType, PageElementSubElementPropsType, PageElementType, VariableType} from '../Types';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({

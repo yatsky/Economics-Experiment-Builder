@@ -5,7 +5,7 @@ import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import PageElement from './PageElement';
 import MyToolbar from './MyToolbar';
 import AppBar from '@material-ui/core/AppBar';
-import {HandleValChangePbPeFuncType, PageBuilderType} from './Config';
+import {HandleValChangePbPeFuncType, PageBuilderType} from '../Types';
 import {Box} from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
