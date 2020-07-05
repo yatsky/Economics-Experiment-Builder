@@ -28,6 +28,13 @@ export type PageElementType = {
     varWidget: WidgetType,
 };
 
+// PageElement is the direct children of a page builder.
+// PageElementSubElement is the direct children of a PageElement.
+export type PageElementSubElementPropsType = {
+    value: string | number,
+    handleValChange: HandleValChangePeFuncType
+}
+
 export type PageBuilderType = {
     name: string,
     selected: boolean,

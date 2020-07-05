@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import {HandleValChangePeFuncType, PageElementType, VariableType} from './Config';
+import {HandleValChangePeFuncType, PageElementSubElementPropsType, PageElementType, VariableType} from './Config';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -30,10 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-function VariableTypeSelect(props: {
-    value: string,
-    handleValChange: HandleValChangePeFuncType
-}) {
+function VariableTypeSelect(props: PageElementSubElementPropsType) {
     const classes = useStyles();
 
     const variableTypes = {
@@ -68,7 +65,7 @@ function VariableTypeSelect(props: {
     );
 }
 
-function VariableOwner(props: { value: string, handleValChange: HandleValChangePeFuncType }) {
+function VariableOwner(props: PageElementSubElementPropsType) {
     const classes = useStyles();
     const owners = ["Subsession", "Group", "Player"];
     const variableOwnerItems = owners.map((val) => <MenuItem value={val} key={val}>{val}</MenuItem>);
@@ -93,7 +90,7 @@ function VariableOwner(props: { value: string, handleValChange: HandleValChangeP
     );
 }
 
-function VariableName(props: { handleValChange: HandleValChangePeFuncType, value: string }) {
+function VariableName(props: PageElementSubElementPropsType) {
 
     // sets the name of a variable
     const classes = useStyles();
@@ -115,7 +112,7 @@ function VariableName(props: { handleValChange: HandleValChangePeFuncType, value
     );
 }
 
-function Label(props: { handleValChange: HandleValChangePeFuncType, value: string }) {
+function Label(props: PageElementSubElementPropsType) {
     // sets the label of a variable
     const classes = useStyles();
 
@@ -192,7 +189,7 @@ function IntMin(props: { handleValChange: HandleValChangePeFuncType, value: numb
     );
 }
 
-function IntMax(props: { handleValChange: HandleValChangePeFuncType, value: number }) {
+function IntMax(props: PageElementSubElementPropsType) {
     // sets the mininum value of an integer variable
     const classes = useStyles();
 
