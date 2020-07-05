@@ -1,5 +1,4 @@
 import React from 'react';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
@@ -8,31 +7,11 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import {HandleValChangePeFuncType, PageElementSubElementPropsType, PageElementType, VariableType} from './Types';
+import useStyles from "./Styles";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        formControl: {
-            margin: theme.spacing(1),
-            minWidth: 120,
-        },
-        selectEmpty: {
-            marginTop: theme.spacing(2),
-        },
-        element: {
-            display: "inline",
-        },
-        paper: {
-            padding: theme.spacing(2),
-            textAlign: 'center',
-            color: theme.palette.text.secondary,
-            marginBottom: theme.spacing(1),
-        },
-    }),
-);
 
 function VariableTypeSelect(props: PageElementSubElementPropsType) {
     const classes = useStyles();
-
     const variableTypes = {
         'String Variable': VariableType.StringVariable,
         'Integer Variable': VariableType.IntegerVariable,

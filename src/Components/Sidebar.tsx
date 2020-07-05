@@ -13,28 +13,7 @@ import {drawerWidth, PageBuilderType} from './Types';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import TextField from "@material-ui/core/TextField";
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            flexGrow: 1,
-        },
-        menuButton: {
-            marginRight: theme.spacing(2),
-            marginBottom: theme.spacing(1),
-        },
-        drawer: {
-            width: drawerWidth,
-            flexShrink: 0,
-        },
-        drawerPaper: {
-            width: drawerWidth,
-        },
-        drawerContainer: {
-            overflow: 'auto',
-        },
-    }),
-);
+import useStyles from "./Styles";
 
 
 const iconMap = {

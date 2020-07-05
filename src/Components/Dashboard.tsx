@@ -8,44 +8,9 @@ import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
 import {drawerWidth, WidgetType, HandleValChangeFuncType, PageBuilderType, VariableType} from './Types';
 import SimpleModal from "./SimpleModal";
+import useStyles from "./Styles";
 
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            flexGrow: 1,
-        },
-        menuButton: {
-            marginRight: theme.spacing(2),
-        },
-        title: {
-            flexGrow: 1,
-        },
-        appBar: {
-            zIndex: theme.zIndex.drawer + 1,
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-            marginBottom: 10,
-        },
-        content: {
-            flexGrow: 1,
-            height: '100vh',
-            overflow: 'auto',
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-        },
-        drawer: {
-            width: drawerWidth,
-            flexShrink: 0,
-        },
-        drawerPaper: {
-            width: drawerWidth,
-        },
-        drawerContainer: {
-            overflow: 'auto',
-        },
-    }),
-);
 
 
 export default function Dashboard() {
