@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
-import {drawerWidth, WidgetType, HandleValChangeFuncType, PageBuilderType, VariableType} from '../Types';
+import {drawerWidth, WidgetType, HandleValChangeFuncType, PageBuilderType, VariableType} from './Types';
 import SimpleModal from "./SimpleModal";
 
 
