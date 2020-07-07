@@ -1,51 +1,13 @@
 import React, {useState} from 'react';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
-import {drawerWidth, HandleValChangeFuncType, PageBuilderType, VariableType} from './Config';
+import {HandleValChangeFuncType, PageBuilderType, VariableType, WidgetType} from './Types';
 import SimpleModal from "./SimpleModal";
-
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            flexGrow: 1,
-        },
-        menuButton: {
-            marginRight: theme.spacing(2),
-        },
-        title: {
-            flexGrow: 1,
-        },
-        appBar: {
-            zIndex: theme.zIndex.drawer + 1,
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-            marginBottom: 10,
-        },
-        content: {
-            flexGrow: 1,
-            height: '100vh',
-            overflow: 'auto',
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-        },
-        drawer: {
-            width: drawerWidth,
-            flexShrink: 0,
-        },
-        drawerPaper: {
-            width: drawerWidth,
-        },
-        drawerContainer: {
-            overflow: 'auto',
-        },
-    }),
-);
+import useStyles from "./Styles";
 
 
 export default function Dashboard() {
@@ -72,6 +34,7 @@ export default function Dashboard() {
                     varMin: 0,
                     varMax: 0,
                     varText: "",
+                    varWidget: WidgetType.HRadioSelect,
                 }],
         },
     ]);
@@ -108,11 +71,12 @@ export default function Dashboard() {
                     varMin: 0,
                     varMax: 0,
                     varText: "",
+                    varWidget: WidgetType.HRadioSelect,
                 },
             );
-        } else if (btnName.includes("Delete")){
+        } else if (btnName.includes("Delete")) {
             pb.data.pop();
-        } else{
+        } else {
             setModalOpen(true);
         }
 
@@ -155,6 +119,7 @@ export default function Dashboard() {
                     varMin: 0,
                     varMax: 0,
                     varText: "",
+                    varWidget: WidgetType.HRadioSelect,
                 }],
             }
         );

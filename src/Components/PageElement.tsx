@@ -1,5 +1,4 @@
 import React from 'react';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
@@ -7,35 +6,12 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import {HandleValChangePeFuncType, PageElementDataType, VariableType} from './Config';
+import {HandleValChangePeFuncType, PageElementSubElementPropsType, PageElementType, VariableType} from './Types';
+import useStyles from "./Styles";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        formControl: {
-            margin: theme.spacing(1),
-            minWidth: 120,
-        },
-        selectEmpty: {
-            marginTop: theme.spacing(2),
-        },
-        element: {
-            display: "inline",
-        },
-        paper: {
-            padding: theme.spacing(2),
-            textAlign: 'center',
-            color: theme.palette.text.secondary,
-            marginBottom: theme.spacing(1),
-        },
-    }),
-);
 
-function VariableTypeSelect(props: {
-    value: string,
-    handleValChange: HandleValChangePeFuncType
-}) {
+function VariableTypeSelect(props: PageElementSubElementPropsType) {
     const classes = useStyles();
-
     const variableTypes = {
         'String Variable': VariableType.StringVariable,
         'Integer Variable': VariableType.IntegerVariable,
@@ -68,7 +44,7 @@ function VariableTypeSelect(props: {
     );
 }
 
-function VariableOwner(props: { value: string, handleValChange: HandleValChangePeFuncType }) {
+function VariableOwner(props: PageElementSubElementPropsType) {
     const classes = useStyles();
     const owners = ["Subsession", "Group", "Player"];
     const variableOwnerItems = owners.map((val) => <MenuItem value={val} key={val}>{val}</MenuItem>);
@@ -93,7 +69,7 @@ function VariableOwner(props: { value: string, handleValChange: HandleValChangeP
     );
 }
 
-function VariableName(props: { handleValChange: HandleValChangePeFuncType, value: string }) {
+function VariableName(props: PageElementSubElementPropsType) {
 
     // sets the name of a variable
     const classes = useStyles();
@@ -115,7 +91,7 @@ function VariableName(props: { handleValChange: HandleValChangePeFuncType, value
     );
 }
 
-function Label(props: { handleValChange: HandleValChangePeFuncType, value: string }) {
+function Label(props: PageElementSubElementPropsType) {
     // sets the label of a variable
     const classes = useStyles();
 
@@ -192,7 +168,7 @@ function IntMin(props: { handleValChange: HandleValChangePeFuncType, value: numb
     );
 }
 
-function IntMax(props: { handleValChange: HandleValChangePeFuncType, value: number }) {
+function IntMax(props: PageElementSubElementPropsType) {
     // sets the mininum value of an integer variable
     const classes = useStyles();
 
@@ -219,7 +195,7 @@ function IntMax(props: { handleValChange: HandleValChangePeFuncType, value: numb
     );
 }
 
-function IntegerVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
+function IntegerVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementType }) {
 
     return (
         <div>
@@ -248,7 +224,7 @@ function IntegerVariableContent(props: { handleValChange: HandleValChangePeFuncT
     );
 }
 
-function StringVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
+function StringVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementType }) {
 
     return (
         <div>
@@ -270,7 +246,7 @@ function StringVariableContent(props: { handleValChange: HandleValChangePeFuncTy
     );
 }
 
-function CurrencyVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
+function CurrencyVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementType }) {
 
     return (
         <div>
@@ -299,7 +275,7 @@ function CurrencyVariableContent(props: { handleValChange: HandleValChangePeFunc
     );
 }
 
-function BooleanVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
+function BooleanVariableContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementType }) {
 
     return (
         <div>
@@ -320,7 +296,7 @@ function BooleanVariableContent(props: { handleValChange: HandleValChangePeFuncT
     );
 }
 
-function PureTextContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementDataType }) {
+function PureTextContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementType }) {
 
     const handleChange = (e: React.ChangeEvent<{ value: string }>) => {
         props.handleValChange(e.target.value!, "varText");
@@ -349,7 +325,7 @@ const variableContentMap = {
 }
 
 export default function PageElement(props: {
-    data: PageElementDataType,
+    data: PageElementType,
     handleValChange: HandleValChangePeFuncType,
 }) {
 

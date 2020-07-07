@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -9,32 +8,11 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Toolbar from '@material-ui/core/Toolbar';
-import {drawerWidth, PageBuilderType} from './Config';
+import {PageBuilderType} from './Types';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import TextField from "@material-ui/core/TextField";
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            flexGrow: 1,
-        },
-        menuButton: {
-            marginRight: theme.spacing(2),
-            marginBottom: theme.spacing(1),
-        },
-        drawer: {
-            width: drawerWidth,
-            flexShrink: 0,
-        },
-        drawerPaper: {
-            width: drawerWidth,
-        },
-        drawerContainer: {
-            overflow: 'auto',
-        },
-    }),
-);
+import useStyles from "./Styles";
 
 
 const iconMap = {
