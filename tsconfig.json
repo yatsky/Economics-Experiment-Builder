@@ -6,8 +6,6 @@
       "dom.iterable",
       "esnext"
     ],
-    // To suppress TS1003
-    "suppressImplicitAnyIndexErrors": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
