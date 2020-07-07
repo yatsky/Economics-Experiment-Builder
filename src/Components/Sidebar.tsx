@@ -13,9 +13,9 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import TextField from "@material-ui/core/TextField";
 import useStyles from "./Styles";
+import {SvgIconComponent} from "@material-ui/icons";
 
-
-const iconMap = {
+const iconMap: {[key: string]: SvgIconComponent} = {
     "Add": AddIcon,
     "Delete": DeleteIcon,
 }
@@ -63,7 +63,7 @@ function PageButton(props: {
 }
 
 export default function Sidebar(props: {
-    pageBuilders: any[], onPageClick: (pageName: string) => void, addPageBuilder: (pageName: string) => void,
+    pageBuilders: PageBuilderType[], onPageClick: (pageName: string) => void, addPageBuilder: (pageName: string) => void,
     removePageBuilder: () => void,
     handlePageNameChange: (oldName: string, newName: string) => void,
     savePageNameChange: (index: number, newName: string) => boolean,
