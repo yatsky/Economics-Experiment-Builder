@@ -17,13 +17,14 @@ export type PageElementType = {
     pageElementId: number,
     varType: VariableType,
     varName: string,
-    varOwner?: string,
+    varOwner: string,
     varLabel: string,
     varInitial: string | number,
-    varMin?: number,
-    varMax?: number,
-    varText?: string,
+    varMin: number,
+    varMax: number,
+    varText: string,
     varWidget: WidgetType,
+    [key: string]: string | number,
 };
 
 // PageElement is the direct children of a page builder.
