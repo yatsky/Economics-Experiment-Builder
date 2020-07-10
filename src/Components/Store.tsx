@@ -59,7 +59,7 @@ const store = configureStore({
 // Extract the action creators object and the reducer
 const {actions, reducer} = pageBuilderSlice;
 // Extract and export each action creator by name
-export const {addPb} = actions
+export const {addPb, deletePb, selectPb} = actions
 // Export the reducer, either as a default or named export
 export {reducer}
 
