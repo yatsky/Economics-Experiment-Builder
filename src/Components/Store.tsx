@@ -1,5 +1,5 @@
 import {configureStore, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {PageBuilderType, VariableType, WidgetType} from "./Types";
+import { VariableType, WidgetType} from "./Types";
 
 const pageBuilderSlice = createSlice({
     name: 'pageBuilder',
