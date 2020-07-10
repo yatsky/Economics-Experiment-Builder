@@ -21,9 +21,34 @@ const pageBuilderSlice = createSlice({
             }],
     }],
     reducers: {
-        addPb: (state: PageBuilderType[], action) => [...state, action.payload],
-        deletePb: (state, action: PayloadAction<number>) => state,
-        updatePb: (state, action: PayloadAction<{}>) => state,
+        addPb: (state, action:PayloadAction) => [...state, {
+            name: "Page " + (state.length + 1).toString(),
+            selected: false,
+            data: [
+                {
+                    pageElementId: state.length,
+                    varType: VariableType.IntegerVariable,
+                    varName: "",
+                    varLabel: "",
+                    varInitial: "",
+                    varOwner: "Subsession",
+                    varMin: 0,
+                    varMax: 0,
+                    varText: "",
+                    varWidget: WidgetType.HRadioSelect,
+                }],
+        }],
+        deletePb: (state, action: PayloadAction) => {
+            // https://github.com/immerjs/immer/issues/115
+            state.splice(state.findIndex(pb => pb.selected), 1)
+            state[0].selected = true
+        },
+        updatePb: (state, action: PayloadAction) => state,
+        selectPb: (state, action) => state.map((pb, idx) => {
+            pb.selected = idx === action.payload
+            return pb
+            }
+        )
     }
 })
 
