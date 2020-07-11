@@ -191,4 +191,4 @@ function Sidebar(props: OwnProps) {
     );
 }
 
-export default connector(Sidebar)
+export default Sidebar
