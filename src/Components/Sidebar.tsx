@@ -156,31 +156,6 @@ function Sidebar(props: OwnProps) {
                         Save data
                     </Button>
 
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        onClick={()=> store.dispatch(addPb(
-                            {
-                                name: "Page 2",
-                                selected: false,
-                                data: [
-                                    {
-                                        pageElementId: 2,
-                                        varType: VariableType.IntegerVariable,
-                                        varName: "",
-                                        varLabel: "",
-                                        varInitial: "",
-                                        varOwner: "Subsession",
-                                        varMin: 0,
-                                        varMax: 0,
-                                        varText: "",
-                                        varWidget: WidgetType.HRadioSelect,
-                                    }],
-                            },
-                        ))}
-                    >
-                        Testing count
-                    </Button>
                 </List>
                 <Divider/>
                 <List>
