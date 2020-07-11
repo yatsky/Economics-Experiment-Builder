@@ -8,6 +8,8 @@ import Sidebar from './Sidebar';
 import {HandleValChangeFuncType, PageBuilderType, VariableType, WidgetType} from './Types';
 import SimpleModal from "./SimpleModal";
 import useStyles from "./Styles";
+import {useSelector} from "react-redux";
+import store, { RootState, toggleHelp } from "./Store";
 
 
 export default function Dashboard() {
