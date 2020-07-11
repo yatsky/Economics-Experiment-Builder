@@ -12,7 +12,7 @@ import useStyles from "./Styles";
 
 function VariableTypeSelect(props: PageElementSubElementPropsType) {
     const classes = useStyles();
-    const variableTypes: {[key: string]: VariableType} = {
+    const variableTypes: { [key: string]: VariableType } = {
         'String Variable': VariableType.StringVariable,
         'Integer Variable': VariableType.IntegerVariable,
         'Currency Variable': VariableType.CurrencyVariable,

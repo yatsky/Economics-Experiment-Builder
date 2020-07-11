@@ -8,7 +8,7 @@ import HelpIcon from '@material-ui/icons/Help';
 import {SvgIconComponent} from "@material-ui/icons";
 
 
-const iconMap: {[key: string]: SvgIconComponent} = {
+const iconMap: { [key: string]: SvgIconComponent } = {
     "Add": AddIcon,
     "Delete": DeleteIcon,
     "Help": HelpIcon,

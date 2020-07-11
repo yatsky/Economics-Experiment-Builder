@@ -1,5 +1,5 @@
 import {configureStore, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import { VariableType, WidgetType} from "./Types";
+import {VariableType, WidgetType} from "./Types";
 
 const pageBuilderSlice = createSlice({
     name: 'pageBuilder',
@@ -21,7 +21,7 @@ const pageBuilderSlice = createSlice({
             }],
     }],
     reducers: {
-        addPb: (state, action:PayloadAction) => [...state, {
+        addPb: (state, action: PayloadAction) => [...state, {
             name: "Page " + (state.length + 1).toString(),
             selected: false,
             data: [
@@ -45,8 +45,8 @@ const pageBuilderSlice = createSlice({
         },
         updatePb: (state, action: PayloadAction) => state,
         selectPb: (state, action) => state.map((pb, idx) => {
-            pb.selected = idx === action.payload
-            return pb
+                pb.selected = idx === action.payload
+                return pb
             }
         )
     }
