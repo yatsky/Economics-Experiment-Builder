@@ -49,16 +49,27 @@ const pageBuilderSlice = createSlice({
     }
 })
 
+const helpModalIsOpenSlice = createSlice(
+    {
+        name: "modalIsOpen",
+        initialState: false,
+        reducers: {
+            toggleHelp: (state, action:PayloadAction) => !state
+        }
+    }
+)
+
 const store = configureStore({
-    reducer: pageBuilderSlice.reducer
+    reducer: {
+        pageBuilders: pageBuilderSlice.reducer,
+        helpModal: helpModalIsOpenSlice.reducer,
+    }
 },)
 
 // Extract the action creators object and the reducer
-const {actions, reducer} = pageBuilderSlice;
 // Extract and export each action creator by name
-export const {addPb, deletePb, selectPb, addPe, deletePe} = actions
-// Export the reducer, either as a default or named export
-export {reducer}
+export const {addPb, deletePb, selectPb, addPe, deletePe} = pageBuilderSlice.actions
+export const {toggleHelp} = helpModalIsOpenSlice.actions
 
 export default store
-export type RootState = ReturnType<typeof pageBuilderSlice.reducer>
+export type RootState = ReturnType<typeof store.getState>
