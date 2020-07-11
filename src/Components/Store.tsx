@@ -1,42 +1,31 @@
 import {configureStore, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {VariableType, WidgetType} from "./Types";
 
+const defaultPageElement = {
+    pageElementId: 1,
+    varType: VariableType.IntegerVariable,
+    varName: "",
+    varLabel: "",
+    varInitial: "",
+    varOwner: "Subsession",
+    varMin: 0,
+    varMax: 0,
+    varText: "",
+    varWidget: WidgetType.HRadioSelect,
+
+}
 const pageBuilderSlice = createSlice({
     name: 'pageBuilder',
     initialState: [{
         name: "Page 1",
         selected: true,
-        data: [
-            {
-                pageElementId: 1,
-                varType: VariableType.IntegerVariable,
-                varName: "",
-                varLabel: "",
-                varInitial: "",
-                varOwner: "Subsession",
-                varMin: 0,
-                varMax: 0,
-                varText: "",
-                varWidget: WidgetType.HRadioSelect,
-            }],
+        data: [defaultPageElement],
     }],
     reducers: {
         addPb: (state, action: PayloadAction) => [...state, {
             name: "Page " + (state.length + 1).toString(),
             selected: false,
-            data: [
-                {
-                    pageElementId: state.length,
-                    varType: VariableType.IntegerVariable,
-                    varName: "",
-                    varLabel: "",
-                    varInitial: "",
-                    varOwner: "Subsession",
-                    varMin: 0,
-                    varMax: 0,
-                    varText: "",
-                    varWidget: WidgetType.HRadioSelect,
-                }],
+            data: [defaultPageElement],
         }],
         deletePb: (state, action: PayloadAction) => {
             // https://github.com/immerjs/immer/issues/115
