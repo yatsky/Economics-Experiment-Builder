@@ -1,4 +1,4 @@
-import React, {Props, useState} from 'react';
+import React, {useState} from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -8,16 +8,16 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Toolbar from '@material-ui/core/Toolbar';
-import {PageBuilderType, VariableType, WidgetType} from './Types';
+import {PageBuilderType} from './Types';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import TextField from "@material-ui/core/TextField";
 import useStyles from "./Styles";
 import {SvgIconComponent} from "@material-ui/icons";
 import store, {addPb, deletePb, RootState} from './Store';
-import { useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
-const iconMap: {[key: string]: SvgIconComponent} = {
+const iconMap: { [key: string]: SvgIconComponent } = {
     "Add": AddIcon,
     "Delete": DeleteIcon,
 }
@@ -115,7 +115,7 @@ function Sidebar(props: OwnProps) {
                 startIcon={<MyIcon/>}
                 key={val}
                 disabled={val.includes("Delete") && pageBuilders.length === 1 ? true : false}
-                onClick={() => store.dispatch(val.includes("Add")? addPb() : deletePb())}
+                onClick={() => store.dispatch(val.includes("Add") ? addPb() : deletePb())}
             >
                 {val}
             </Button>
@@ -123,10 +123,10 @@ function Sidebar(props: OwnProps) {
     });
 
     const pages = pageBuilders.map((pb, index) => <PageButton key={index}
-                                                                    pb={pb}
-                                                                    handlePageNameChange={handlePageNameChange}
-                                                                    handlePageClick={handlePageClick}
-                                                                    savePageNameChange={(newName: string) => props.savePageNameChange(index, newName)}
+                                                              pb={pb}
+                                                              handlePageNameChange={handlePageNameChange}
+                                                              handlePageClick={handlePageClick}
+                                                              savePageNameChange={(newName: string) => props.savePageNameChange(index, newName)}
         />
     );
 

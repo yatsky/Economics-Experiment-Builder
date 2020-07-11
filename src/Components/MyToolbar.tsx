@@ -37,7 +37,7 @@ export default function MyToolbar() {
             <ToolbarButton className={classes.menuButton} icon={<MyIcon/>}
                            key={val}
                            buttonLabel={val}
-                           handleClick={() => val.includes("Help")?store.dispatch(toggleHelp()):store.dispatch(val.includes("Add") ? addPe() : deletePe())}
+                           handleClick={() => val.includes("Help") ? store.dispatch(toggleHelp()) : store.dispatch(val.includes("Add") ? addPe() : deletePe())}
             />
         );
     });

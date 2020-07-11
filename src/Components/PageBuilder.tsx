@@ -26,7 +26,7 @@ export default function PageBuilder(props: {
     return (
         <Box>
             <AppBar position="sticky">
-                <MyToolbar />
+                <MyToolbar/>
             </AppBar>
             <Grid container>
                 <Grid item xs={12}>

@@ -38,11 +38,11 @@ const pageBuilderSlice = createSlice({
                 return pb
             }
         ),
-        addPe: (state,action:PayloadAction) => {
+        addPe: (state, action: PayloadAction) => {
             let pbId = state.findIndex(pb => pb.selected)
             state[pbId].data.push({pageElementId: state[pbId].data.length, ...defaultPageElement})
         },
-        deletePe: (state,action:PayloadAction) => {
+        deletePe: (state, action: PayloadAction) => {
             let pbId = state.findIndex(pb => pb.selected)
             state[pbId].data.pop()
         },
@@ -54,7 +54,7 @@ const helpModalIsOpenSlice = createSlice(
         name: "modalIsOpen",
         initialState: false,
         reducers: {
-            toggleHelp: (state, action:PayloadAction) => !state
+            toggleHelp: (state, action: PayloadAction) => !state
         }
     }
 )

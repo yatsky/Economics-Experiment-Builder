@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -9,13 +9,13 @@ import {HandleValChangeFuncType, PageBuilderType, VariableType, WidgetType} from
 import SimpleModal from "./SimpleModal";
 import useStyles from "./Styles";
 import {useSelector} from "react-redux";
-import store, { RootState, toggleHelp } from "./Store";
+import {RootState} from "./Store";
 
 
 export default function Dashboard() {
     const classes = useStyles();
 
-    const pageBuilders: PageBuilderType[] = useSelector((state:RootState) => state.pageBuilders)
+    const pageBuilders: PageBuilderType[] = useSelector((state: RootState) => state.pageBuilders)
 
     // Used by each Field in PageElement.
     const handleValChange: HandleValChangeFuncType = (pageElementId, val, dataField, pageName) => {
@@ -113,7 +113,7 @@ export default function Dashboard() {
                     />
                 </Container>
             </main>
-            <SimpleModal />
+            <SimpleModal/>
         </div>
     );
 }
