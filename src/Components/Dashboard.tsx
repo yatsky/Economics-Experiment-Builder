@@ -16,7 +16,6 @@ export default function Dashboard() {
     const classes = useStyles();
 
     const pageBuilders: PageBuilderType[] = useSelector((state:RootState) => state.pageBuilders)
-    const modalOpen: boolean = useSelector((state:RootState) => state.helpModal)
 
     // Used by each Field in PageElement.
     const handleValChange: HandleValChangeFuncType = (pageElementId, val, dataField, pageName) => {
@@ -114,7 +113,7 @@ export default function Dashboard() {
                     />
                 </Container>
             </main>
-            <SimpleModal modalOpen={modalOpen} handleClose={handleModalClose}/>
+            <SimpleModal />
         </div>
     );
 }
