@@ -13,11 +13,6 @@ import useStyles from "./Styles";
 export default function Dashboard() {
     const classes = useStyles();
 
-    const [modalOpen, setModalOpen] = useState(false);
-
-    const handleModalClose = () => {
-        setModalOpen(false);
-    }
 
     const [pageBuilders, setPageBuilders] = useState<PageBuilderType[]>([
         {
