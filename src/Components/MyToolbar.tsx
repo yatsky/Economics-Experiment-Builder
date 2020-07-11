@@ -5,9 +5,10 @@ import ToolbarButton from './ToolbarButton';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import HelpIcon from '@material-ui/icons/Help';
+import {SvgIconComponent} from "@material-ui/icons";
 
 
-const iconMap = {
+const iconMap: {[key: string]: SvgIconComponent} = {
     "Add": AddIcon,
     "Delete": DeleteIcon,
     "Help": HelpIcon,

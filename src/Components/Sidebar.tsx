@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {Props, useState} from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -8,12 +8,14 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Toolbar from '@material-ui/core/Toolbar';
-import {PageBuilderType} from './Types';
+import {PageBuilderType, VariableType, WidgetType} from './Types';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import TextField from "@material-ui/core/TextField";
 import useStyles from "./Styles";
 import {SvgIconComponent} from "@material-ui/icons";
+import store, {addPb} from './Store';
+import { connect, ConnectedProps } from "react-redux";
 
 const iconMap: {[key: string]: SvgIconComponent} = {
     "Add": AddIcon,
@@ -62,12 +64,33 @@ function PageButton(props: {
     )
 }
 
-export default function Sidebar(props: {
-    pageBuilders: PageBuilderType[], onPageClick: (pageName: string) => void, addPageBuilder: (pageName: string) => void,
+type StateProps = {
+    pageBuilders: any[],
+}
+
+const mapState = (state: StateProps) => ({
+    pageBuilders: state.pageBuilders
+})
+
+const mapDispath = {addPb}
+
+type OwnProps = {
+    onPageClick: (pageName: string) => void, addPageBuilder: (pageName: string) => void,
     removePageBuilder: () => void,
     handlePageNameChange: (oldName: string, newName: string) => void,
     savePageNameChange: (index: number, newName: string) => boolean,
-}) {
+}
+
+const connector = connect(
+    mapState,
+    mapDispath
+)
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+type SidebarProps = PropsFromRedux & OwnProps
+
+
+function Sidebar(props: SidebarProps) {
 
     const classes = useStyles();
 
@@ -146,6 +169,32 @@ export default function Sidebar(props: {
                     >
                         Save data
                     </Button>
+
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        onClick={()=> store.dispatch(addPb(
+                            {
+                                name: "Page 2",
+                                selected: false,
+                                data: [
+                                    {
+                                        pageElementId: 2,
+                                        varType: VariableType.IntegerVariable,
+                                        varName: "",
+                                        varLabel: "",
+                                        varInitial: "",
+                                        varOwner: "Subsession",
+                                        varMin: 0,
+                                        varMax: 0,
+                                        varText: "",
+                                        varWidget: WidgetType.HRadioSelect,
+                                    }],
+                            },
+                        ))}
+                    >
+                        Testing count
+                    </Button>
                 </List>
                 <Divider/>
                 <List>
@@ -155,3 +204,5 @@ export default function Sidebar(props: {
         </Drawer>
     );
 }
+
+export default connector(Sidebar)
