@@ -42,7 +42,7 @@ export default function Dashboard() {
 
         let pb = pbs.filter((pb, index) => index === idx)[0];
         pb.name = newName;
-        setPageBuilders(pbs);
+        // setPageBuilders(pbs);
         return true
     };
 
@@ -50,7 +50,7 @@ export default function Dashboard() {
         let pbs = pageBuilders.slice();
         let pb = pbs.filter(pb => pb.name === oldName)[0];
         pb.name = newName;
-        setPageBuilders(pbs);
+        // setPageBuilders(pbs);
     };
 
     const addPageBuilder = (pageName: string) => {
@@ -73,19 +73,19 @@ export default function Dashboard() {
                 }],
             }
         );
-        setPageBuilders(pbs);
+        // setPageBuilders(pbs);
     }
     const removePageBuilder = () => {
         let pbs = pageBuilders.slice().filter(pb => !pb.selected);
         pbs[0].selected = true;
-        setPageBuilders(pbs);
+        // setPageBuilders(pbs);
     }
     const handlePageBuilderSelect = (pageName: string) => {
         let newPBs = pageBuilders.slice().map(obj => {
             obj.name === pageName ? obj.selected = true : obj.selected = false;
             return obj;
         });
-        setPageBuilders(newPBs);
+        // setPageBuilders(newPBs);
     };
 
     let curPb = pageBuilders.filter(obj => obj.selected)[0];
