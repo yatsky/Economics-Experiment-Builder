@@ -78,7 +78,7 @@ function Sidebar(props: OwnProps) {
 
     const classes = useStyles();
 
-    const pageBuilders: StateProps = useSelector((state: RootState) => state)
+    const pageBuilders: StateProps = useSelector((state: RootState) => state.pageBuilders)
 
     const handlePageClick = (pageName: string) => {
         props.onPageClick(pageName);

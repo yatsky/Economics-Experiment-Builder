@@ -38,6 +38,8 @@ export default function Dashboard() {
                 }],
         },
     ]);
+    const pageBuilders: PageBuilderType[] = useSelector((state:RootState) => state.pageBuilders)
+    const modalOpen: boolean = useSelector((state:RootState) => state.helpModal)
 
     // Used by each Field in PageElement.
     const handleValChange: HandleValChangeFuncType = (pageElementId, val, dataField, pageName) => {
