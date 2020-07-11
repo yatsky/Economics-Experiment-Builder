@@ -14,8 +14,8 @@ import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import TextField from "@material-ui/core/TextField";
 import useStyles from "./Styles";
 import {SvgIconComponent} from "@material-ui/icons";
-import store, {addPb} from './Store';
-import { connect, ConnectedProps } from "react-redux";
+import store, {addPb, deletePb, RootState} from './Store';
+import { useSelector} from "react-redux";
 
 const iconMap: {[key: string]: SvgIconComponent} = {
     "Add": AddIcon,
@@ -74,13 +74,15 @@ type OwnProps = {
 }
 
 
-function Sidebar(props: SidebarProps) {
+function Sidebar(props: OwnProps) {
 
     const classes = useStyles();
 
+    const pageBuilders: StateProps = useSelector((state: RootState) => state)
+
     const handleButtonClick = (e: React.MouseEvent, action: string) => {
-        if (action.includes("Add")) props.addPageBuilder("Page " + (props.pageBuilders.length + 1).toString());
-        if (action.includes("Delete")) props.removePageBuilder();
+        if (action.includes("Add")) store.dispatch(addPb());
+        if (action.includes("Delete")) store.dispatch(deletePb());
     };
 
     const handlePageClick = (pageName: string) => {
@@ -108,7 +110,7 @@ function Sidebar(props: SidebarProps) {
         }
 
         // Start file download.
-        download("experiment_design_data.json", JSON.stringify(props.pageBuilders));
+        download("experiment_design_data.json", JSON.stringify(pageBuilders));
     };
 
     const buttons = ["Add Page", "Delete Page"].map((val) => {
@@ -117,7 +119,7 @@ function Sidebar(props: SidebarProps) {
                 className={classes.menuButton}
                 startIcon={<MyIcon/>}
                 key={val}
-                disabled={val.includes("Delete") && props.pageBuilders.length === 1 ? true : false}
+                disabled={val.includes("Delete") && pageBuilders.length === 1 ? true : false}
                 onClick={(e) => handleButtonClick(e, val)}
             >
                 {val}
@@ -125,7 +127,7 @@ function Sidebar(props: SidebarProps) {
         );
     });
 
-    const pages = props.pageBuilders.map((pb, index) => <PageButton key={index}
+    const pages = pageBuilders.map((pb, index) => <PageButton key={index}
                                                                     pb={pb}
                                                                     handlePageNameChange={handlePageNameChange}
                                                                     handlePageClick={handlePageClick}
