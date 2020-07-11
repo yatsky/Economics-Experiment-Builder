@@ -53,36 +53,7 @@ export default function Dashboard() {
             return pb;
         });
 
-        setPageBuilders(pbs);
-    };
-
-    // Toolbar click
-    const handleToolbarBtnClick: (pageName: string, btnName: string) => void = (pageName, btnName) => {
-        let pbs = pageBuilders.slice();
-        let pb = pbs.filter(pb => pb.selected)[0];
-
-        if (btnName.includes("Add")) {
-            pb.data.push(
-                {
-                    pageElementId: pb.data.length,
-                    varType: VariableType.IntegerVariable,
-                    varName: "",
-                    varLabel: "",
-                    varInitial: "",
-                    varOwner: "Subsession",
-                    varMin: 0,
-                    varMax: 0,
-                    varText: "",
-                    varWidget: WidgetType.HRadioSelect,
-                },
-            );
-        } else if (btnName.includes("Delete")) {
-            pb.data.pop();
-        } else {
-            setModalOpen(true);
-        }
-
-        setPageBuilders(pbs);
+        //setPageBuilders(pbs);
     };
 
     const savePageNameChange: (idx: number, newName: string) => boolean = (idx, newName) => {

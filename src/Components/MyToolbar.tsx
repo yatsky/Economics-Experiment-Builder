@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
-export default function MyToolbar(props: { handleClick: (btnName: string) => void }) {
+export default function MyToolbar() {
     const classes = useStyles();
     const buttons = ["Add", "Delete", "Help"].map((val) => {
         const MyIcon = iconMap[val];

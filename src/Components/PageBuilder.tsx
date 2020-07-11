@@ -10,7 +10,6 @@ import useStyles from "./Styles";
 
 export default function PageBuilder(props: {
     pageBuilder: PageBuilderType, handleValChange: HandleValChangePbPeFuncType,
-    handleToolbarBtnClick: (btnName: string) => void,
 }) {
     const classes = useStyles();
 
@@ -27,7 +26,7 @@ export default function PageBuilder(props: {
     return (
         <Box>
             <AppBar position="sticky">
-                <MyToolbar handleClick={props.handleToolbarBtnClick}/>
+                <MyToolbar />
             </AppBar>
             <Grid container>
                 <Grid item xs={12}>
