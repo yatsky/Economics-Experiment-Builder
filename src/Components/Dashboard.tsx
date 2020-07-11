@@ -13,26 +13,6 @@ import useStyles from "./Styles";
 export default function Dashboard() {
     const classes = useStyles();
 
-
-    const [pageBuilders, setPageBuilders] = useState<PageBuilderType[]>([
-        {
-            name: "Page 1",
-            selected: true,
-            data: [
-                {
-                    pageElementId: 1,
-                    varType: VariableType.IntegerVariable,
-                    varName: "",
-                    varLabel: "",
-                    varInitial: "",
-                    varOwner: "Subsession",
-                    varMin: 0,
-                    varMax: 0,
-                    varText: "",
-                    varWidget: WidgetType.HRadioSelect,
-                }],
-        },
-    ]);
     const pageBuilders: PageBuilderType[] = useSelector((state:RootState) => state.pageBuilders)
     const modalOpen: boolean = useSelector((state:RootState) => state.helpModal)
 
