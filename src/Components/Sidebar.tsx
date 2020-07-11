@@ -80,11 +80,6 @@ function Sidebar(props: OwnProps) {
 
     const pageBuilders: StateProps = useSelector((state: RootState) => state)
 
-    const handleButtonClick = (e: React.MouseEvent, action: string) => {
-        if (action.includes("Add")) store.dispatch(addPb());
-        if (action.includes("Delete")) store.dispatch(deletePb());
-    };
-
     const handlePageClick = (pageName: string) => {
         props.onPageClick(pageName);
     }
@@ -120,7 +115,7 @@ function Sidebar(props: OwnProps) {
                 startIcon={<MyIcon/>}
                 key={val}
                 disabled={val.includes("Delete") && pageBuilders.length === 1 ? true : false}
-                onClick={(e) => handleButtonClick(e, val)}
+                onClick={() => store.dispatch(val.includes("Add")? addPb() : deletePb())}
             >
                 {val}
             </Button>
