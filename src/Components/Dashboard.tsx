@@ -118,7 +118,6 @@ export default function Dashboard() {
             </AppBar>
 
             <Sidebar
-                pageBuilders={pageBuilders}
                 onPageClick={handlePageBuilderSelect}
                 addPageBuilder={addPageBuilder}
                 removePageBuilder={removePageBuilder}
