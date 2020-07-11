@@ -111,7 +111,6 @@ export default function Dashboard() {
                     <PageBuilder
                         pageBuilder={curPb}
                         handleValChange={(pageElementId, val, dataField) => handleValChange(pageElementId, val, dataField, curPb.name)}
-                        handleToolbarBtnClick={(btnName) => handleToolbarBtnClick(curPb.name, btnName)}
                     />
                 </Container>
             </main>
