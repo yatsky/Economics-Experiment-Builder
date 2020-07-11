@@ -6,7 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
 import HelpIcon from '@material-ui/icons/Help';
 import {SvgIconComponent} from "@material-ui/icons";
-import store, {addPe, deletePe} from "./Store";
+import store, {addPe, deletePe, toggleHelp} from "./Store";
 
 
 const iconMap: { [key: string]: SvgIconComponent } = {
@@ -37,7 +37,7 @@ export default function MyToolbar(props: { handleClick: (btnName: string) => voi
             <ToolbarButton className={classes.menuButton} icon={<MyIcon/>}
                            key={val}
                            buttonLabel={val}
-                           handleClick={() => store.dispatch(val.includes("Add") ? addPe() : deletePe())}
+                           handleClick={() => val.includes("Help")?store.dispatch(toggleHelp()):store.dispatch(val.includes("Add") ? addPe() : deletePe())}
             />
         );
     });
