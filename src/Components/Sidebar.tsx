@@ -64,15 +64,7 @@ function PageButton(props: {
     )
 }
 
-type StateProps = {
-    pageBuilders: any[],
-}
-
-const mapState = (state: StateProps) => ({
-    pageBuilders: state.pageBuilders
-})
-
-const mapDispath = {addPb}
+type StateProps = PageBuilderType[]
 
 type OwnProps = {
     onPageClick: (pageName: string) => void, addPageBuilder: (pageName: string) => void,
@@ -80,14 +72,6 @@ type OwnProps = {
     handlePageNameChange: (oldName: string, newName: string) => void,
     savePageNameChange: (index: number, newName: string) => boolean,
 }
-
-const connector = connect(
-    mapState,
-    mapDispath
-)
-
-type PropsFromRedux = ConnectedProps<typeof connector>
-type SidebarProps = PropsFromRedux & OwnProps
 
 
 function Sidebar(props: SidebarProps) {
