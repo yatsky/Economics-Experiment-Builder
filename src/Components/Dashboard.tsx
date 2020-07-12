@@ -52,33 +52,6 @@ export default function Dashboard() {
         // setPageBuilders(pbs);
     };
 
-    const addPageBuilder = (pageName: string) => {
-        let pbs = pageBuilders.slice();
-        pbs.push(
-            {
-                name: pageName,
-                selected: false,
-                data: [{
-                    pageElementId: 1,
-                    varType: VariableType.IntegerVariable,
-                    varName: "",
-                    varLabel: "",
-                    varInitial: "",
-                    varOwner: "Subsession",
-                    varMin: 0,
-                    varMax: 0,
-                    varText: "",
-                    varWidget: WidgetType.HRadioSelect,
-                }],
-            }
-        );
-        // setPageBuilders(pbs);
-    }
-    const removePageBuilder = () => {
-        let pbs = pageBuilders.slice().filter(pb => !pb.selected);
-        pbs[0].selected = true;
-        // setPageBuilders(pbs);
-    }
     const handlePageBuilderSelect = (pageName: string) => {
         let newPBs = pageBuilders.slice().map(obj => {
             obj.name === pageName ? obj.selected = true : obj.selected = false;
@@ -98,13 +71,7 @@ export default function Dashboard() {
                 </Toolbar>
             </AppBar>
 
-            <Sidebar
-                onPageClick={handlePageBuilderSelect}
-                addPageBuilder={addPageBuilder}
-                removePageBuilder={removePageBuilder}
-                handlePageNameChange={handlePageNameChange}
-                savePageNameChange={savePageNameChange}
-            />
+            <Sidebar />
             <main className={classes.content}>
                 <Container maxWidth="lg">
                     <PageBuilder

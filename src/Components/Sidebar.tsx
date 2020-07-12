@@ -50,28 +50,11 @@ function PageButton(props: {
 
 type StateProps = PageBuilderType[]
 
-type OwnProps = {
-    onPageClick: (pageName: string) => void, addPageBuilder: (pageName: string) => void,
-    removePageBuilder: () => void,
-    handlePageNameChange: (oldName: string, newName: string) => void,
-    savePageNameChange: (index: number, newName: string) => boolean,
-}
-
-
-function Sidebar(props: OwnProps) {
+function Sidebar() {
 
     const classes = useStyles();
 
     const pageBuilders: StateProps = useSelector((state: RootState) => state.pageBuilders)
-
-    const handlePageClick = (pageName: string) => {
-        props.onPageClick(pageName);
-    }
-
-    const handlePageNameChange = (e: React.ChangeEvent<{ value: string }>, oldName: string) => {
-        props.handlePageNameChange(oldName, e.target.value)
-        e.preventDefault();
-    }
 
     const saveData = () => {
         // https://gist.github.com/liabru/11263260#gistcomment-2894088
