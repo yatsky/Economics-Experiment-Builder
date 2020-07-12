@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
-import {HandleValChangeFuncType, PageBuilderType, VariableType, WidgetType} from './Types';
+import {HandleValChangeFuncType, PageBuilderType} from './Types';
 import SimpleModal from "./SimpleModal";
 import useStyles from "./Styles";
 import {useSelector} from "react-redux";
@@ -71,7 +71,7 @@ export default function Dashboard() {
                 </Toolbar>
             </AppBar>
 
-            <Sidebar />
+            <Sidebar/>
             <main className={classes.content}>
                 <Container maxWidth="lg">
                     <PageBuilder
