@@ -1,8 +1,11 @@
 import {configureStore, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {VariableType, WidgetType} from "./Types";
+import {HandleValChangeFuncType, PageElementType, VariableType, WidgetType} from "./Types";
 import { v4 as uuidv4 } from 'uuid';
 
-const defaultPageElement = {
+// We have to type this
+// Otherwise we can't update pageBuilder.data[dataField]
+// It will give TS7053
+const defaultPageElement: PageElementType = {
     pageElementId: 1,
     varType: VariableType.IntegerVariable,
     varName: "",
