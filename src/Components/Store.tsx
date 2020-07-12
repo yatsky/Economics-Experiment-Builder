@@ -1,5 +1,6 @@
 import {configureStore, createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {VariableType, WidgetType} from "./Types";
+import { v4 as uuidv4 } from 'uuid';
 
 const defaultPageElement = {
     pageElementId: 1,
@@ -17,12 +18,14 @@ const defaultPageElement = {
 const pageBuilderSlice = createSlice({
     name: 'pageBuilder',
     initialState: [{
+        pbId: uuidv4(),
         name: "Page 1",
         selected: true,
         data: [defaultPageElement],
     }],
     reducers: {
         addPb: (state, action: PayloadAction) => [...state, {
+            pbId: uuidv4(),
             name: "Page " + (state.length + 1).toString(),
             selected: false,
             data: [defaultPageElement],
@@ -33,11 +36,7 @@ const pageBuilderSlice = createSlice({
             state[0].selected = true
         },
         updatePb: (state, action: PayloadAction) => state,
-        selectPb: (state, action) => state.map((pb, idx) => {
-                pb.selected = idx === action.payload
-                return pb
-            }
-        ),
+        selectPb: (state, action:PayloadAction<string>) => state.forEach((pb) => pb.pbId === action.payload ? pb.selected = true : pb.selected = false),
         addPe: (state, action: PayloadAction) => {
             let pbId = state.findIndex(pb => pb.selected)
             state[pbId].data.push({pageElementId: state[pbId].data.length, ...defaultPageElement})
