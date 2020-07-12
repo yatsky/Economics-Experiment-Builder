@@ -35,6 +35,7 @@ export type PageElementSubElementPropsType = {
 }
 
 export type PageBuilderType = {
+    pbId: string,
     name: string,
     selected: boolean,
     data: PageElementType[],
