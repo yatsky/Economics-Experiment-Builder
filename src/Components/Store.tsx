@@ -35,7 +35,10 @@ const pageBuilderSlice = createSlice({
             state.splice(state.findIndex(pb => pb.selected), 1)
             state[0].selected = true
         },
-        updatePb: (state, action: PayloadAction) => state,
+        updatePbName: (state, action: PayloadAction<{pbId: string, newName: string}>) => {
+            console.log(action.payload.newName)
+            state.filter(pb => pb.pbId === action.payload.pbId)[0].name=action.payload.newName
+        },
         selectPb: (state, action:PayloadAction<string>) => state.forEach((pb) => pb.pbId === action.payload ? pb.selected = true : pb.selected = false),
         addPe: (state, action: PayloadAction) => {
             let pbId = state.findIndex(pb => pb.selected)
@@ -67,7 +70,7 @@ const store = configureStore({
 
 // Extract the action creators object and the reducer
 // Extract and export each action creator by name
-export const {addPb, deletePb, selectPb, addPe, deletePe} = pageBuilderSlice.actions
+export const {addPb, deletePb, updatePbName, selectPb, addPe, deletePe} = pageBuilderSlice.actions
 export const {toggleHelp} = helpModalIsOpenSlice.actions
 
 export default store

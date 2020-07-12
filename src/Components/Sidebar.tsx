@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -14,7 +14,7 @@ import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import TextField from "@material-ui/core/TextField";
 import useStyles from "./Styles";
 import {SvgIconComponent} from "@material-ui/icons";
-import store, {addPb, deletePb, RootState} from './Store';
+import store, {addPb, deletePb, RootState, selectPb, updatePbName} from './Store';
 import {useSelector} from "react-redux";
 
 const iconMap: { [key: string]: SvgIconComponent } = {
@@ -24,40 +24,24 @@ const iconMap: { [key: string]: SvgIconComponent } = {
 
 function PageButton(props: {
                         pb: PageBuilderType,
-                        handlePageClick: (pageName: string) => void,
-                        handlePageNameChange: (e: React.ChangeEvent<{ value: string }>, pageName: string) => void,
-                        savePageNameChange: (newPageName: string) => boolean,
                     }
 ) {
 
-    let [oldName, setOldName] = useState(props.pb.name);
-
-    const handleOnFocus = (e: React.FocusEvent<{ value: string }>) => {
-        setOldName(props.pb.name);
-    }
-
-    const handleOnBlur = (e: React.FocusEvent<{ value: string }>) => {
-        let success = props.savePageNameChange(e.target.value);
-        if (!success) props.savePageNameChange(oldName);
+    // Save name change
+    const handleNameChange = (e: React.ChangeEvent<{ value: string }>) => {
+        store.dispatch(updatePbName({pbId: props.pb.pbId, newName: e.target.value}))
     }
 
     const classes = useStyles();
 
     return (
-        // I used page name as the key but apparently it changes and in that case,
-        // React will re-render everything since it cannot track it via its key.
-        // Hence the TextField will lose focus.
-        // So we use index to be the key to prevent re-render when the page name is changed.
-        // see: https://stackoverflow.com/questions/42573017/in-react-es6-why-does-the-input-field-lose-focus-after-typing-a-character#:~:text=it%20is%20because%20you%20are,function%20into%20your%20render%20directly.
         <Paper className={classes.menuButton}>
             <ListItem selected={props.pb.selected}>
                 {
                     props.pb.selected ? <RadioButtonCheckedIcon/> :
-                        <RadioButtonUncheckedIcon onClick={() => props.handlePageClick(props.pb.name)}/>
+                        <RadioButtonUncheckedIcon onClick={() => store.dispatch(selectPb(props.pb.pbId))}/>
                 }
-                <TextField value={props.pb.name} onChange={(e) => props.handlePageNameChange(e, props.pb.name)}
-                           onFocus={handleOnFocus}
-                           onBlur={handleOnBlur}
+                <TextField value={props.pb.name} onChange={handleNameChange}
                 />
             </ListItem>
         </Paper>
@@ -124,9 +108,6 @@ function Sidebar(props: OwnProps) {
 
     const pages = pageBuilders.map((pb, index) => <PageButton key={index}
                                                               pb={pb}
-                                                              handlePageNameChange={handlePageNameChange}
-                                                              handlePageClick={handlePageClick}
-                                                              savePageNameChange={(newName: string) => props.savePageNameChange(index, newName)}
         />
     );
 
