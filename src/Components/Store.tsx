@@ -64,7 +64,9 @@ const pageBuilderSlice = createSlice({
             // select the next page element when possible
             // otherwise select the previous page element
             if (pes.length > 0) {
-                if (deleteIndex === pes.length - 1) pes[deleteIndex - 1].selected = true
+                // pes.length is now one less after pes.slice()
+                // so we do not compare deleteIndex === pes.length - 1
+                if (deleteIndex === pes.length) pes[pes.length - 1].selected = true
                 else pes[deleteIndex].selected = true
             }
         },
