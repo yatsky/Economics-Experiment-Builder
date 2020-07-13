@@ -35,7 +35,7 @@ const pageBuilderSlice = createSlice({
             pbId: uuidv4(),
             name: "Page " + (state.length + 1).toString(),
             selected: false,
-            data: [defaultPageElement],
+            data: [{...defaultPageElement, pageElementId: uuidv4()}],
         }],
         deletePb: (state, action: PayloadAction) => {
             // https://github.com/immerjs/immer/issues/115
@@ -50,7 +50,11 @@ const pageBuilderSlice = createSlice({
         addPe: (state, action: PayloadAction) => {
             let pbId = state.findIndex(pb => pb.selected)
             state[pbId].data.forEach(pe => pe.selected = false)
-            state[pbId].data.push({pageElementId: uuidv4(), ...defaultPageElement})
+
+            // The commented code will not work since the pageElementId in defaultPageElement
+            // will override the one that is just set.
+            // state[pbId].data.push({pageElementId: uuidv4(), ...defaultPageElement})
+            state[pbId].data.push({...defaultPageElement, pageElementId: uuidv4()})
         },
         deletePe: (state, action: PayloadAction) => {
             let pb = state.filter(pb => pb.selected)[0]
