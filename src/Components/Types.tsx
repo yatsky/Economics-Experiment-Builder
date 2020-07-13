@@ -15,6 +15,7 @@ export enum WidgetType {
 
 export type PageElementType = {
     pageElementId: number,
+    selected: boolean,
     varType: VariableType,
     varName: string,
     varOwner: string,
@@ -24,7 +25,7 @@ export type PageElementType = {
     varMax: number,
     varText: string,
     varWidget: WidgetType,
-    [key: string]: string | number,
+    [key: string]: string | number | boolean,
 };
 
 // PageElement is the direct children of a page builder.
