@@ -1,6 +1,9 @@
 import {configureStore, createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {HandleValChangeFuncType, PageElementType, VariableType, WidgetType} from "./Types";
+import {HandleValChangeFuncType, PageBuilderType, PageElementType, VariableType, WidgetType} from "./Types";
 import { v4 as uuidv4 } from 'uuid';
+
+const getSelectedPb = (state: PageBuilderType[]) => state.filter(pb => pb.selected)[0]
+const getSelectedPe = (state: PageBuilderType[]) => getSelectedPb(state).data.filter(pe => pe.selected)[0]
 
 // We have to type this
 // Otherwise we can't update pageBuilder.data[dataField]
