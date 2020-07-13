@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 // Otherwise we can't update pageBuilder.data[dataField]
 // It will give TS7053
 const defaultPageElement: PageElementType = {
-    pageElementId: 1,
+    pageElementId: uuidv4(),
     selected: true,
     varType: VariableType.IntegerVariable,
     varName: "",
@@ -46,7 +46,7 @@ const pageBuilderSlice = createSlice({
         selectPb: (state, action:PayloadAction<string>) => state.forEach((pb) => pb.pbId === action.payload ? pb.selected = true : pb.selected = false),
         addPe: (state, action: PayloadAction) => {
             let pbId = state.findIndex(pb => pb.selected)
-            state[pbId].data.push({pageElementId: state[pbId].data.length, ...defaultPageElement})
+            state[pbId].data.push({pageElementId: uuidv4(), ...defaultPageElement})
         },
         deletePe: (state, action: PayloadAction) => {
             let pbId = state.findIndex(pb => pb.selected)

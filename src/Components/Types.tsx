@@ -14,7 +14,7 @@ export enum WidgetType {
 }
 
 export type PageElementType = {
-    pageElementId: number,
+    pageElementId: string,
     selected: boolean,
     varType: VariableType,
     varName: string,
