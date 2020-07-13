@@ -72,6 +72,10 @@ const pageBuilderSlice = createSlice({
             const {pbId, pageElementId, val, dataField} = action.payload
             let pb = state.filter(pb => pb.pbId === pbId)[0]
             pb.data[pageElementId][dataField] = val
+        selectPe: (state, action:PayloadAction<string>) => {
+            let pb = getSelectedPb(state)
+            pb.data.forEach(pe => pe.pageElementId === action.payload ? pe.selected = true : pe.selected = false)
+        },
         }
     }
 })
@@ -95,7 +99,7 @@ const store = configureStore({
 
 // Extract the action creators object and the reducer
 // Extract and export each action creator by name
-export const {addPb, deletePb, updatePbName, selectPb, addPe, deletePe, updatePe} = pageBuilderSlice.actions
+export const {addPb, deletePb, updatePbName, selectPb, addPe, deletePe, selectPe, updatePe} = pageBuilderSlice.actions
 export const {toggleHelp} = helpModalIsOpenSlice.actions
 
 export default store
