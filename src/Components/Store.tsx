@@ -68,14 +68,14 @@ const pageBuilderSlice = createSlice({
                 else pes[deleteIndex].selected = true
             }
         },
-        updatePe: (state, action: PayloadAction<{pbId: string, pageElementId: number, val: VariableType | number | string, dataField: string}>) => {
-            const {pbId, pageElementId, val, dataField} = action.payload
-            let pb = state.filter(pb => pb.pbId === pbId)[0]
-            pb.data[pageElementId][dataField] = val
         selectPe: (state, action:PayloadAction<string>) => {
             let pb = getSelectedPb(state)
             pb.data.forEach(pe => pe.pageElementId === action.payload ? pe.selected = true : pe.selected = false)
         },
+        updatePe: (state, action: PayloadAction<{val: VariableType | number | string, dataField: string}>) => {
+            const {val, dataField} = action.payload
+            let pe = getSelectedPe(state)
+            pe[dataField] = val
         }
     }
 })
