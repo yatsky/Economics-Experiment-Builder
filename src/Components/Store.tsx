@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 // It will give TS7053
 const defaultPageElement: PageElementType = {
     pageElementId: 1,
+    selected: true,
     varType: VariableType.IntegerVariable,
     varName: "",
     varLabel: "",
