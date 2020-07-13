@@ -6,12 +6,11 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import {HandleValChangePeFuncType, PageElementSubElementPropsType, PageElementType, VariableType} from './Types';
+import {PageElementSubElementPropsType, PageElementType, VariableType} from './Types';
 import useStyles from "./Styles";
-import store, {selectPb, updatePe, selectPe, RootState} from './Store';
+import store, {selectPe, updatePe} from './Store';
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
-import ListItem from "@material-ui/core/ListItem";
 
 
 function VariableTypeSelect(props: PageElementSubElementPropsType) {
