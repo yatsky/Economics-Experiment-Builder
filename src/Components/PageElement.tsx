@@ -8,7 +8,7 @@ import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import {HandleValChangePeFuncType, PageElementSubElementPropsType, PageElementType, VariableType} from './Types';
 import useStyles from "./Styles";
-import store, {selectPb, updatePe, selectPe} from './Store';
+import store, {selectPb, updatePe, selectPe, RootState} from './Store';
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
 import ListItem from "@material-ui/core/ListItem";
@@ -28,7 +28,8 @@ function VariableTypeSelect(props: PageElementSubElementPropsType) {
         // Why does the for loop changes the type of variableType to string?
         // for(let variableType in VariableType){
         let v = variableTypes[e.target.value as string];
-        props.handleValChange(v, "varType");
+        //props.handleValChange(v, "varType");
+        store.dispatch(updatePe({val: v, dataField: "varType"}))
     };
 
     const variableTypeItems = Object.keys(variableTypes).map((val) => <MenuItem value={variableTypes[val]}
@@ -56,7 +57,8 @@ function VariableOwner(props: PageElementSubElementPropsType) {
         // Why does the for loop changes the type of variableType to string?
         // for(let variableType in VariableType){
         let v = e.target.value as string;
-        props.handleValChange(v, "varOwner");
+        //props.handleValChange(v, "varOwner");
+        store.dispatch(updatePe({val: v, dataField: "varOwner"}))
     };
     return (
         <div className={classes.element}>
@@ -80,7 +82,8 @@ function VariableName(props: PageElementSubElementPropsType) {
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
         let v = e.target.value as string;
-        props.handleValChange(v, "varName");
+        //props.handleValChange(v, "varName");
+        store.dispatch(updatePe({val: v, dataField: "varName"}))
     };
     return (
         <span>
@@ -101,7 +104,8 @@ function Label(props: PageElementSubElementPropsType) {
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
         let v = e.target.value as string;
-        props.handleValChange(v, "varLabel");
+        //props.handleValChange(v, "varLabel");
+        store.dispatch(updatePe({val: v, dataField: "varLabel"}))
     };
     return (
         <span>
@@ -124,7 +128,8 @@ function Initial({type = "number", handleValChange, value}: { type?: string, han
     const classes = useStyles();
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
         let v = e.target.value as string;
-        handleValChange(v, "varInitial");
+        //handleValChange(v, "varInitial");
+        store.dispatch(updatePe({val: v, dataField: "varInitial"}))
     };
 
     return (
@@ -151,7 +156,8 @@ function IntMin(props: { handleValChange: HandleValChangePeFuncType, value: numb
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
         let v = e.target.value as string;
-        props.handleValChange(v, "varMin");
+        //props.handleValChange(v, "varMin");
+        store.dispatch(updatePe({val: v, dataField: "varMin"}))
         e.preventDefault();
     };
     return (
@@ -178,7 +184,8 @@ function IntMax(props: PageElementSubElementPropsType) {
 
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
         let v = e.target.value as string;
-        props.handleValChange(v, "varMax");
+        //props.handleValChange(v, "varMax");
+        store.dispatch(updatePe({val: v, dataField: "varMax"}))
         e.preventDefault();
     };
     return (
@@ -303,7 +310,7 @@ function BooleanVariableContent(props: { handleValChange: HandleValChangePeFuncT
 function PureTextContent(props: { handleValChange: HandleValChangePeFuncType, data: PageElementType }) {
 
     const handleChange = (e: React.ChangeEvent<{ value: string }>) => {
-        props.handleValChange(e.target.value!, "varText");
+        store.dispatch(updatePe({val: e.target.value!, dataField: "varInitial"}))
         e.preventDefault();
     };
 
