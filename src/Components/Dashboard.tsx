@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PageBuilder from './PageBuilder';
 import Sidebar from './Sidebar';
-import {HandleValChangeFuncType, PageBuilderType} from './Types';
+import {PageBuilderType} from './Types';
 import SimpleModal from "./SimpleModal";
 import useStyles from "./Styles";
 import {useSelector} from "react-redux";
@@ -18,19 +18,6 @@ export default function Dashboard() {
     const pageBuilders: PageBuilderType[] = useSelector((state: RootState) => state.pageBuilders)
 
     // Used by each Field in PageElement.
-    const handleValChange: HandleValChangeFuncType = (pageElementId, val, dataField, pageName) => {
-        console.log(pageBuilders);
-        console.log(pageName);
-        let pbs = pageBuilders.slice().map(pb => {
-            if (pb.name.includes(pageName)) {
-                pb.data[pageElementId][dataField] = val;
-                console.log(pb.data[pageElementId].varType);
-            }
-            return pb;
-        });
-
-        //setPageBuilders(pbs);
-    };
 
     let curPb = pageBuilders.filter(obj => obj.selected)[0];
     return (
@@ -48,7 +35,6 @@ export default function Dashboard() {
                 <Container maxWidth="lg">
                     <PageBuilder
                         pageBuilder={curPb}
-                        handleValChange={(pageElementId, val, dataField) => handleValChange(pageElementId, val, dataField, curPb.name)}
                     />
                 </Container>
             </main>

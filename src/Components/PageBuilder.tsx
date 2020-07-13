@@ -9,7 +9,7 @@ import {Box} from "@material-ui/core";
 import useStyles from "./Styles";
 
 export default function PageBuilder(props: {
-    pageBuilder: PageBuilderType, handleValChange: HandleValChangePbPeFuncType,
+    pageBuilder: PageBuilderType,
 }) {
     const classes = useStyles();
 
