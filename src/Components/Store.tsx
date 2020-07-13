@@ -50,8 +50,16 @@ const pageBuilderSlice = createSlice({
             state[pbId].data.push({pageElementId: uuidv4(), ...defaultPageElement})
         },
         deletePe: (state, action: PayloadAction) => {
-            let pbId = state.findIndex(pb => pb.selected)
-            state[pbId].data.pop()
+            let pb = state.filter(pb => pb.selected)[0]
+            let pes = pb.data
+            let deleteIndex = pes.findIndex(pe => pe.selected)
+            pes.splice(deleteIndex, 1)
+            // select the next page element when possible
+            // otherwise select the previous page element
+            if (pes.length > 0) {
+                if (deleteIndex === pes.length - 1) pes[deleteIndex - 1].selected = true
+                else pes[deleteIndex].selected = true
+            }
         },
         updatePe: (state, action: PayloadAction<{pbId: string, pageElementId: number, val: VariableType | number | string, dataField: string}>) => {
             const {pbId, pageElementId, val, dataField} = action.payload
