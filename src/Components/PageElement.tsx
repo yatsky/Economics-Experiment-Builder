@@ -8,6 +8,10 @@ import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import {HandleValChangePeFuncType, PageElementSubElementPropsType, PageElementType, VariableType} from './Types';
 import useStyles from "./Styles";
+import store, {selectPb, updatePe, selectPe} from './Store';
+import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
+import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
+import ListItem from "@material-ui/core/ListItem";
 
 
 function VariableTypeSelect(props: PageElementSubElementPropsType) {
@@ -334,6 +338,11 @@ export default function PageElement(props: {
     return (
         <div>
             <Paper className={classes.paper}>
+
+                {
+                    props.data.selected ? <RadioButtonCheckedIcon className={classes.checkbox}/> :
+                        <RadioButtonUncheckedIcon className={classes.checkbox} onClick={() => {store.dispatch(selectPe(props.data.pageElementId))}}/>
+                }
                 <VariableTypeSelect
                     value={props.data.varType}
                     handleValChange={props.handleValChange}

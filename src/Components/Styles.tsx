@@ -52,6 +52,9 @@ const useStyles = makeStyles((theme: Theme) =>
         drawerContainer: {
             overflow: 'auto',
         },
+        checkbox: {
+            float: 'left',
+        },
     }),
 );
 
