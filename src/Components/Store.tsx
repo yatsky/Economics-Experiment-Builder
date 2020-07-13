@@ -46,6 +46,7 @@ const pageBuilderSlice = createSlice({
         selectPb: (state, action:PayloadAction<string>) => state.forEach((pb) => pb.pbId === action.payload ? pb.selected = true : pb.selected = false),
         addPe: (state, action: PayloadAction) => {
             let pbId = state.findIndex(pb => pb.selected)
+            state[pbId].data.forEach(pe => pe.selected = false)
             state[pbId].data.push({pageElementId: uuidv4(), ...defaultPageElement})
         },
         deletePe: (state, action: PayloadAction) => {
