@@ -19,7 +19,7 @@ const defaultPageElement: PageElementType = {
     varMin: 0,
     varMax: 0,
     varText: "",
-    varWidget: WidgetType.HRadioSelect,
+    varWidget: WidgetType.NoWidget,
 
 }
 const pageBuilderSlice = createSlice({

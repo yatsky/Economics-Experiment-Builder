@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import {PageElementSubElementPropsType, PageElementType, VariableType} from './Types';
+import {PageElementSubElementPropsType, PageElementType, VariableType, WidgetType} from './Types';
 import useStyles from "./Styles";
 import store, {selectPe, updatePe} from './Store';
 import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
@@ -57,6 +57,31 @@ function VariableOwner(props: PageElementSubElementPropsType) {
         <div className={classes.element}>
             <FormControl className={classes.formControl}>
                 <InputLabel>Variable Owner</InputLabel>
+                <Select
+                    value={props.value}
+                    onChange={handleChange}
+                >
+                    {variableOwnerItems}
+                </Select>
+            </FormControl>
+        </div>
+    );
+}
+
+function VariableWidget(props:PageElementSubElementPropsType) {
+
+    const classes = useStyles();
+    // https://github.com/microsoft/TypeScript/issues/17198#issuecomment-358666450
+    const widgets = Object.values(WidgetType);
+    const variableOwnerItems = widgets.map((val) => <MenuItem value={val} key={val}>{val}</MenuItem>);
+    const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+        let v = e.target.value as string;
+        store.dispatch(updatePe({val: v, dataField: "varWidget"}))
+    };
+    return (
+        <div className={classes.element}>
+            <FormControl className={classes.formControl}>
+                <InputLabel>Variable Widget</InputLabel>
                 <Select
                     value={props.value}
                     onChange={handleChange}
@@ -342,6 +367,9 @@ export default function PageElement(props: {
                 }
                 <VariableTypeSelect
                     value={props.data.varType}
+                />
+                <VariableWidget
+                    value={props.data.varWidget}
                 />
                 <VariableContentFunc
                     data={props.data}
