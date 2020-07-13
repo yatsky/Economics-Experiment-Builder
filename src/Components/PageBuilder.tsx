@@ -18,7 +18,6 @@ export default function PageBuilder(props: {
             <PageElement
                 key={idx}
                 data={data}
-                handleValChange={(val, dataField) => props.handleValChange(idx, val, dataField)}
             />
         )
     })

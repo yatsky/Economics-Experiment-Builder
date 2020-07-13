@@ -32,7 +32,6 @@ export type PageElementType = {
 // PageElementSubElement is the direct children of a PageElement.
 export type PageElementSubElementPropsType = {
     value: string | number,
-    handleValChange: HandleValChangePeFuncType
 }
 
 export type PageBuilderType = {
