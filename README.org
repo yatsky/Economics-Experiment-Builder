@@ -15,3 +15,7 @@ All that is left is the main logic that cannot be set up by the researchers.
 
 I'm aware of the existence of oTreeHub, but have not tried it myself.
 Broadly speaking, compared to oTreeHub, this is more of tool that helps researchers connect with developers.
+* Use the app 👍
+To use the app, head over to: https://econ-experiment-builder.herokuapp.com/.
+
+If you have some experience using oTree, this app should be pretty easy to use at the moment.
