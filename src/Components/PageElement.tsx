@@ -37,6 +37,7 @@ function VariableTypeSelect(props: PageElementSubElementPropsType) {
                 <Select
                     value={props.value}
                     onChange={handleChange}
+                    disabled={props.disabled}
                 >
                     {variableTypeItems}
                 </Select>
@@ -60,6 +61,7 @@ function VariableOwner(props: PageElementSubElementPropsType) {
                 <Select
                     value={props.value}
                     onChange={handleChange}
+                    disabled={props.disabled}
                 >
                     {variableOwnerItems}
                 </Select>
@@ -85,6 +87,7 @@ function VariableWidget(props:PageElementSubElementPropsType) {
                 <Select
                     value={props.value}
                     onChange={handleChange}
+                    disabled={props.disabled}
                 >
                     {variableOwnerItems}
                 </Select>
@@ -109,6 +112,7 @@ function VariableName(props: PageElementSubElementPropsType) {
                     label="Variable name"
                     onChange={handleChange}
                     value={props.value}
+                    disabled={props.disabled}
                 />
             </FormControl>
         </span>
@@ -133,13 +137,14 @@ function Label(props: PageElementSubElementPropsType) {
                     rowsMax={4}
                     onChange={handleChange}
                     value={props.value}
+                    disabled={props.disabled}
                 />
             </FormControl>
         </span>
     );
 }
 
-function Initial({type = "number", value}: { type?: string, value: string | number }) {
+function Initial({type = "number", disabled, value}: { type?: string, disabled: boolean, value: string | number }) {
     // sets the initial value of a variable
     const classes = useStyles();
     const handleChange = (e: React.ChangeEvent<{ value: unknown }>) => {
@@ -160,13 +165,14 @@ function Initial({type = "number", value}: { type?: string, value: string | numb
                     }}
                     onChange={handleChange}
                     value={value}
+                    disabled={disabled}
                 />
             </FormControl>
         </span>
     );
 }
 
-function IntMin(props: { value: number }) {
+function IntMin(props: { value: number, disabled: boolean }) {
     // sets the mininum value of an integer variable
     const classes = useStyles();
 
@@ -187,6 +193,7 @@ function IntMin(props: { value: number }) {
                     }}
                     onChange={handleChange}
                     value={props.value}
+                    disabled={props.disabled}
                 />
             </FormControl>
         </span>
@@ -214,6 +221,7 @@ function IntMax(props: PageElementSubElementPropsType) {
                     }}
                     onChange={handleChange}
                     value={props.value}
+                    disabled={props.disabled}
                 />
             </FormControl>
         </span>
@@ -226,24 +234,30 @@ function IntegerVariableContent(props: { data: PageElementType }) {
         <div>
             <VariableName
                 value={props.data.varName}
+                disabled={!props.data.selected}
             />
             <VariableOwner
                 value={props.data.varOwner!}
+                disabled={!props.data.selected}
             />
             <Label
                 value={props.data.varLabel}
+                disabled={!props.data.selected}
             />
             <Initial
 
                 value={props.data.varInitial as string}
+                disabled={!props.data.selected}
             />
             <IntMin
 
                 value={props.data.varMin!}
+                disabled={!props.data.selected}
             />
             <IntMax
 
                 value={props.data.varMax!}
+                disabled={!props.data.selected}
             />
         </div>
     );
@@ -255,17 +269,21 @@ function StringVariableContent(props: { data: PageElementType }) {
         <div>
             <VariableName
                 value={props.data.varName}
+                disabled={!props.data.selected}
             />
             <VariableOwner
                 value={props.data.varOwner!}
+                disabled={!props.data.selected}
             />
             <Label
                 value={props.data.varLabel}
+                disabled={!props.data.selected}
             />
             <Initial
                 type="string"
 
                 value={props.data.varInitial!}
+                disabled={!props.data.selected}
             />
         </div>
     );
@@ -277,24 +295,30 @@ function CurrencyVariableContent(props: { data: PageElementType }) {
         <div>
             <VariableName
                 value={props.data.varName}
+                disabled={!props.data.selected}
             />
             <VariableOwner
                 value={props.data.varOwner!}
+                disabled={!props.data.selected}
             />
             <Label
                 value={props.data.varLabel}
+                disabled={!props.data.selected}
             />
             <Initial
 
                 value={props.data.varInitial!}
+                disabled={!props.data.selected}
             />
             <IntMin
 
                 value={props.data.varMin!}
+                disabled={!props.data.selected}
             />
             <IntMax
 
                 value={props.data.varMax!}
+                disabled={!props.data.selected}
             />
         </div>
     );
@@ -306,16 +330,20 @@ function BooleanVariableContent(props: { data: PageElementType }) {
         <div>
             <VariableName
                 value={props.data.varName}
+                disabled={!props.data.selected}
             />
             <VariableOwner
                 value={props.data.varOwner!}
+                disabled={!props.data.selected}
             />
             <Label
                 value={props.data.varLabel}
+                disabled={!props.data.selected}
             />
             <Initial
 
                 value={props.data.varInitial as string}
+                disabled={!props.data.selected}
             />
         </div>
     );
@@ -367,9 +395,11 @@ export default function PageElement(props: {
                 }
                 <VariableTypeSelect
                     value={props.data.varType}
+                    disabled={!props.data.selected}
                 />
                 <VariableWidget
                     value={props.data.varWidget}
+                    disabled={!props.data.selected}
                 />
                 <VariableContentFunc
                     data={props.data}
